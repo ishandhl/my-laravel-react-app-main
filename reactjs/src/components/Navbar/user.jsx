@@ -37,10 +37,10 @@ export default function UserNav() {
                 <div className="flex justify-between items-center py-3 container mx-auto">
                     <div className=''>
                         <Link to="/">
-                            <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="DIYO Logo" />
+                            <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
                         </Link>
                     </div>
-                    <Link to="/" className="text-3xl text-white block ml-20 mr-1">DIYO</Link>
+                    <Link to="/" className="text-3xl text-white block ml-20 mr-1">Ujyalo</Link>
                     <div className="hidden md:flex items-center space-x-8">
                         {/* Dropdown menu */}
                         <div className="relative group mx-4">

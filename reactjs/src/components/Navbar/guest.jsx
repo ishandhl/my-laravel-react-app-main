@@ -17,10 +17,10 @@ export default function GuestNav() {
         <div className="flex justify-between items-center py-3 container mx-auto">
           <div>
             <Link to="/">
-              <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="DIYO Logo" />
+              <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
             </Link>
           </div>
-          <Link to="/" className="text-3xl text-white block ml-20 mr-4">DIYO</Link>
+          <Link to="/" className="text-3xl text-white block ml-20 mr-4">Ujyalo</Link>
           <ul className="hidden md:flex items-center space-x-8">
             <li>
               <Link to="/login" className="text-white text-1xl hover:text-gray-300 mx-2">Login</Link>

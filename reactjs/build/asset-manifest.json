@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.47b4f79b.css",
+    "main.js": "/static/js/main.394c8584.js",
+    "static/js/453.3669db72.chunk.js": "/static/js/453.3669db72.chunk.js",
+    "static/media/nepal.jpg": "/static/media/nepal.712d063210f0762f3175.jpg",
+    "static/media/logo.png": "/static/media/logo.d1093e495d6967ec4a5d.png",
+    "index.html": "/index.html",
+    "main.47b4f79b.css.map": "/static/css/main.47b4f79b.css.map",
+    "main.394c8584.js.map": "/static/js/main.394c8584.js.map",
+    "453.3669db72.chunk.js.map": "/static/js/453.3669db72.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47b4f79b.css",
+    "static/js/main.394c8584.js"
+  ]
+}

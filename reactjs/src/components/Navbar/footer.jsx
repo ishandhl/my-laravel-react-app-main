@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="font-bold text-3xl ">DIYO</h3>
-            <p className="text-sm ">&copy; 2025 DIYO. All rights reserved.</p>
-            <p className="text-sm ">Your trusted source for DIY projects and ideas.</p>
+            <h3 className="font-bold text-3xl ">Ujyalo</h3>
+            <p className="text-sm ">&copy; 2025 Ujyalo. All rights reserved.</p>
+            <p className="text-sm ">Your trusted source for Ujyalo projects and ideas.</p>
           </div>
 
           {/* Quick Links */}

@@ -29,7 +29,7 @@ export default function Home() {
                     <img src={require('./nepal.jpg')} alt="Background" className="w-full h-[80vh]" />
                     {/* Slogan */}
                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-semibold opacity-90">
-                        Diyo: Illuminate Dreams, Illuminate Lives
+                        Ujyalo: Illuminate Dreams, Illuminate Lives
                     </span>
 
                     {/* Button */}

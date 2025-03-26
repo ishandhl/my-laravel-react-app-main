@@ -52,7 +52,7 @@ export default function Post_Pledge() {
                 Thank you for backing the project!
               </h4>
               <p className="mb-8 text-lg">
-                Your pledge is appreciated greatly by our team at Diyo and the project creators!
+                Your pledge is appreciated greatly by our team at Ujyalo and the project creators!
               </p>
               <h7>
                 You can view the updates about the project (and rewards if any) in the involved projects page.
