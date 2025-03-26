@@ -172,7 +172,7 @@ export default function Project_View() {
                             </button>
                         </div>
                     </div>
-
+                    
                     {/* Details Column */}
                     <div className="md:col-span-1">
                         <div className="p-4 md:p-8">
@@ -226,7 +226,7 @@ export default function Project_View() {
                 </article>
 
                 {/* Updates Section */}
-                {project.updates && project.updates.length > 0 ? (
+                {project && Object.keys(project).length > 0 ? (
                     <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mt-8">
                         <h2 className="text-lg font-semibold mb-4 text-white">Progress and Discussions</h2>
                         <div className="grid gap-4">
@@ -244,7 +244,7 @@ export default function Project_View() {
                     </div>
                 ) : (
                     <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mt-8">
-                        <h2 className="text-lg font-semibold mb-4 text-white">Progress and Discussions</h2>
+                        <h2 className="text-lg font-semibold mb-4 text-white test">Progress and Discussions</h2>
                         <p className="text-white">No updates available</p>
                     </div>
                 )}
