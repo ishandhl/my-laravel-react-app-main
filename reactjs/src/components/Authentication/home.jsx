@@ -28,14 +28,14 @@ export default function Home() {
                     {/* Image */}
                     <img src={require('./nepal.jpg')} alt="Background" className="w-full h-[80vh]" />
                     <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-transparent bg-gradient-to-r from-[#7B5BF5] via-[#3A3478] to-[#49D8D4] bg-clip-text text-6xl md:text-8xl font-semibold opacity-100 animate-typing animate-blink-caret font-stylish whitespace-nowrap drop-shadow-lg">
-                                                                        Ujyalo: Brighten Lives
+                                                            Ujyalo: Brighten Lives
                     </span>
 
 
                     {/* Button */}
                     <Link
                         to={user ? `/${user.name}/my_projects` : "/login"}
-                        className="bg-yellow-50 hover:bg-yellow-300 text-gray-600 font-bold py-3 px-6 rounded-lg transition duration-300 absolute bottom-14 left-1/2 transform -translate-x-1/2 opacity-90"
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 absolute bottom-14 left-1/2 transform -translate-x-1/2 opacity-90"
                     >
                         Create Project
                     </Link>
@@ -43,14 +43,14 @@ export default function Home() {
             </div>
 
             {/* Featured Project */}
-            <div className="bg-yellow-50 py-20 ">
+            <div className="bg-gray-100 py-20">
                 <div className='container mx-auto'>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Left Column: Featured Project */}
                         <div className="col-span-2 relative ">
                             <div className='bg-white mb-10'>
 
-                                <h2 className="absolute transform text-white bg-yellow-500  p-3 mt-3 ms-3 rounded-lg text-3xl font-semibold ml-1">Featured Project</h2>
+                                <h2 className="absolute transform text-white bg-blue-500  p-3 mt-3 ms-3 rounded-lg text-l font-semibold ml-1">Featured Project</h2>
                                 {featuredProject && (
                                     <div className="rounded-lg shadow-md overflow-hidden w-full h-96"> {/* Adjusted height */}
                                         <Link to={`/project/${featuredProject.projectID}`} className="block">

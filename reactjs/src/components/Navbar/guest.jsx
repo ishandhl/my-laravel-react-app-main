@@ -13,17 +13,17 @@ import Footer from './footer';
 export default function GuestNav() {
   return (
     <div className="App">
-      <nav className="bg-yellow-500 shadow-lg py-1 ">
+      <nav className="bg-white-500 shadow-lg py-1 ">
         <div className="flex justify-between items-center py-3 container mx-auto">
           <div>
             <Link to="/">
               <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
             </Link>
           </div>
-          <Link to="/" className="text-3xl text-white block ml-20 mr-4">Ujyalo</Link>
+          <Link to="/" className="text-transparent bg-gradient-to-r from-[#7B5BF5] via-[#3A3478] to-[#49D8D4] bg-clip-text text-3xl font-extrabold block ml-20 mr-1">Ujyalo</Link>
           <ul className="hidden md:flex items-center space-x-8">
             <li>
-              <Link to="/login" className="text-white text-1xl hover:text-gray-300 mx-2">Login</Link>
+              <Link to="/login" className="text-black text-1xl hover:text-gray-400 mx-2">Login</Link>
             </li>
           </ul>
         </div>
