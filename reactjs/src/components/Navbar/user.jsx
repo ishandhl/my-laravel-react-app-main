@@ -33,18 +33,18 @@ export default function UserNav() {
 
     return (
         <div className="App">
-            <nav className="bg-yellow-500 shadow-lg py-1 ">
-                <div className="flex justify-between items-center py-3 container mx-auto">
+            <nav className="bg-white shadow-lg py-1">
+                <div className="flex justify-between items-center py-4 container mx-auto">
                     <div className=''>
                         <Link to="/">
                             <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
                         </Link>
                     </div>
-                    <Link to="/" className="text-3xl text-white block ml-20 mr-1">Ujyalo</Link>
+                    <Link to="/" className="text-transparent bg-gradient-to-r from-[#7B5BF5] via-[#3A3478] to-[#49D8D4] bg-clip-text text-3xl font-extrabold block ml-20 mr-1">Ujyalo</Link>
                     <div className="hidden md:flex items-center space-x-8">
                         {/* Dropdown menu */}
                         <div className="relative group mx-4">
-                            <button onClick={toggleDropdown} className="text-white group-hover:text-gray-300 focus:outline-none flex items-center">
+                            <button onClick={toggleDropdown} className="text-gray-800 group-hover:text-gray-600 focus:outline-none flex items-center">
                                 <FaUserCircle className="text-2xl mr-1" /> {/* Use the FontAwesome user circle icon */}
                                 <svg className={`w-4 h-4 ml-1 transition-transform transform ${isDropdownOpen ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
