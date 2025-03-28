@@ -105,7 +105,7 @@ export default function ProjectsAll() {
                 {/* Pagination */}
                 {filteredProjects.length > projectsPerPage && (
                     <nav className="mt-4" aria-label="Pagination">
-                        <ul className="flex justify-center">
+                        <ul className="justify-content">
                             {Array(Math.ceil(filteredProjects.length / projectsPerPage)).fill().map((_, index) => (
                                 <li key={index} className="cursor-pointer mx-1">
                                     <button
