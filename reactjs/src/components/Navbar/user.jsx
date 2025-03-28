@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Home from '../Authentication/home';
 import AuthUser from '../Authentication/AuthUser';
@@ -17,6 +17,8 @@ import Footer from './footer';
 export default function UserNav() {
     const { user, token, logout } = AuthUser();
     const navigate = useNavigate();
+    const dropdownRef = useRef(null); // Ref for the dropdown
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const logoutUser = () => {
         if (token !== undefined) {
@@ -24,8 +26,6 @@ export default function UserNav() {
             navigate("/login");
         }
     };
-
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -36,6 +36,21 @@ export default function UserNav() {
         setIsDropdownOpen(false);
     };
 
+    // Close the dropdown if clicked outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="App">
             <nav className="bg-white shadow-lg py-1">
@@ -43,12 +58,12 @@ export default function UserNav() {
                     <div>
                         <Link to="/">
                             <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
-                        </Link>
+                        </Link>{/* [#7B5BF5] via-[#3A3478] to-[#49D8D4] */}
                     </div>
-                    <Link to="/" className="text-transparent bg-gradient-to-r from-[#7B5BF5] via-[#3A3478] to-[#49D8D4] bg-clip-text text-3xl font-extrabold block ml-20 mr-1 hover:text-blue-300">Ujyalo</Link>
+                    <Link to="/" className="text-transparent bg-gradient-to-r from-[#49D8D4] via-[#3A3478] to-[#7B5BF5] bg-clip-text text-3xl font-extrabold block ml-20 mr-1">Ujyalo</Link>
                     <div className="hidden md:flex items-center space-x-8">
                         {/* Dropdown menu */}
-                        <div className="relative group mx-4">
+                        <div className="relative group mx-4" ref={dropdownRef}>
                             <button onClick={toggleDropdown} className="text-gray-800 group-hover:text-blue-500 focus:outline-none flex items-center">
                                 <AiOutlineUser className="text-2xl mr-1" />
                             </button>

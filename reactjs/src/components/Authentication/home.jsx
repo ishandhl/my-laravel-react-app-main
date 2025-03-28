@@ -27,7 +27,7 @@ export default function Home() {
                     <div className='bg-black opacity-15 absolute top-0 left-0 bottom-0 right-0'></div>
                     {/* Image */}
                     <img src={require('./nepal.jpg')} alt="Background" className="w-full h-[80vh]" />
-                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-transparent bg-gradient-to-r from-[#7B5BF5] via-[#3A3478] to-[#49D8D4] bg-clip-text text-6xl md:text-8xl font-semibold opacity-100 animate-typing animate-blink-caret font-stylish whitespace-nowrap drop-shadow-lg">
+                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-transparent bg-gradient-to-r from-[#49D8D4] via-[#3A3478] to-[#7B5BF5] bg-clip-text text-6xl md:text-8xl font-semibold opacity-100 animate-typing animate-blink-caret font-stylish whitespace-nowrap drop-shadow-lg">
                                                             Ujyalo: Brighten Lives
                     </span>
 
