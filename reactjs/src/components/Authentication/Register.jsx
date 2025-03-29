@@ -30,7 +30,7 @@ export default function Register() {
 
     return (
         <>
-            <section class="bg-yellow-50 dark:bg-gray-900">
+            <section class="gray-100 dark:bg-gray-900">
                 <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <Link to="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                         <img src={require('./logo.png')} className="h-12" alt="Ujyalo Logo" />
@@ -66,9 +66,9 @@ export default function Register() {
                                         <label for="terms" class="font-light text-gray-500 dark:text-gray-300">I accept the <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" >Terms and Conditions</a></label>
                                     </div>
                                 </div>
-                                <button type="submit" className="w-full text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-primary-800">Register new account</button>
+                                <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-primary-800">Register new account</button>
                                 <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Already have an account? <Link to="/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
+                                    Already have an account? <Link to="/login" class="font-medium text-primary-600 hover:text-blue-500 hover:underline dark:text-primary-500">Login here</Link>
                                 </p>
                             </form>
                         </div>
