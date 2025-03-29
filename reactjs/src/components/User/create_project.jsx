@@ -102,7 +102,7 @@ export default function Project_Creation() {
         , []);
 
     return (
-        <div className=" px-4 py-8 bg-grey-100">
+        <div className=" px-4 py-8 bg-grey-200">
             <div className='container mx-auto flex  gap-3'>
                 <div className=" p-4 gap-2">
                     <div className='flex justify-center'>

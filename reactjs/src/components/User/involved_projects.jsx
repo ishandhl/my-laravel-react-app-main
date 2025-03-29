@@ -15,7 +15,7 @@ export default function InvolvedProjects() {
     }, []);
 
     return (
-        <div className="bg-yellow-50 pt-2 flex items-center justify-center min-h-screen">
+        <div className="bg-grey-200 pt-2 flex items-center justify-center min-h-screen">
             <div className="w-4/5 sm:w-4/5 md:w-4/5 lg:w-4/5 backdrop-blur-sm bg-white/40 p-6 rounded-lg shadow-sm border-violet-200 border">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-semibold">Involved Projects</h2>
