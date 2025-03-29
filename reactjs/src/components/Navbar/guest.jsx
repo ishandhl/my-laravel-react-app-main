@@ -23,7 +23,7 @@ export default function GuestNav() {
           <Link to="/" className="text-transparent bg-gradient-to-r from-[#49D8D4] via-[#3A3478] to-[#7B5BF5] bg-clip-text text-3xl font-extrabold block ml-20 mr-1">Ujyalo</Link>
           <ul className="hidden md:flex items-center space-x-8">
             <li>
-              <Link to="/login" className="text-black text-1xl hover:text-gray-400 mx-2">Login</Link>
+              <Link to="/login" className="bg-blue-500 text-white text-1xl px-4 py-2 rounded hover:bg-blue-600 transition font-bold">Login</Link>
             </li>
           </ul>
         </div>
