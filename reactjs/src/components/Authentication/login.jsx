@@ -51,7 +51,7 @@ export default function Login() {
     // };
 
     return (
-        <section className="bg-yellow-50">
+        <section className="bg-gray-100">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                     <img src={require('./logo.png')} className="h-12" alt="Ujyalo Logo" />
@@ -82,9 +82,9 @@ export default function Login() {
                                 </div>
                                 {/* <button onClick={() => setShowPasswordResetForm(true)} className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</button>     */}
                                                         </div>
-                            <button type="button" onClick={submitForm} className="w-full text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-primary-800">Sign in</button>
+                            <button type="button" onClick={submitForm} className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Sign in</button>
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Don’t have an account yet? <Link to="/register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
+                                Don’t have an account yet? <Link to="/register" className="text-primary-600 font-medium hover:text-blue-500 hover:underline dark:text-primary-500">Sign up</Link>
                             </p>
                         </form>
                     </div>
