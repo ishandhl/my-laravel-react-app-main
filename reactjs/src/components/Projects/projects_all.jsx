@@ -41,7 +41,7 @@ export default function ProjectsAll() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="bg-yellow-50">
+        <div className="bg-gray-100">
             <div className="container mx-auto py-20">
 
                 <div className="ml-2 ">
@@ -105,7 +105,7 @@ export default function ProjectsAll() {
                 {/* Pagination */}
                 {filteredProjects.length > projectsPerPage && (
                     <nav className="mt-4" aria-label="Pagination">
-                        <ul className="justify-content">
+                        <ul className="justify-center">
                             {Array(Math.ceil(filteredProjects.length / projectsPerPage)).fill().map((_, index) => (
                                 <li key={index} className="cursor-pointer mx-1">
                                     <button

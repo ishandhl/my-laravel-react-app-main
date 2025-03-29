@@ -311,7 +311,7 @@ export default function Project_Edit_View() {
     };
 
     return (
-        <div className='bg-yellow-50 '>
+        <div className='bg-gray-100'>
             <div className="grid container mx-auto">
                 <div className="grid grid-cols-2 gap-3 bg-yellow-50 p-6 rounded-lg mb-4">
                     {/* Left Column */}

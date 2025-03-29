@@ -60,7 +60,7 @@ export default function Profile() {
 
     return (
         <>
-            <div className="bg-yellow-50 py-20">
+            <div className="bg-gray-100 py-20">
                 <div className="w-full max-w-lg mx-auto px-6 py-10 bg-white rounded-lg border ">
                     {userData && (
                         <>
@@ -97,7 +97,7 @@ export default function Profile() {
                             </div>
 
                             <div className="mt-6 flex justify-center space-x-4">
-                                <button onClick={handleInformationChanges} className="w-full px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">
+                                <button onClick={handleInformationChanges} className="w-full px-6 py-2.5 bg-blue-500 text-white font-medium rounded-lg shadow-md hover:bg-blue-600 focus:ring-4 focus:ring-blue-300">
                                     Update Information
                                 </button>
                                 <Link to="/" className="w-full px-6 py-2.5 bg-gray-600 text-white font-medium rounded-lg shadow-md hover:bg-gray-700 focus:ring-4 focus:ring-gray-300">
@@ -109,10 +109,10 @@ export default function Profile() {
                 </div>
             </div>
 
-            <div className=" p-6 bg-yellow-50 dark:bg-gray-800 rounded-lg shadow-md">
+            <div className=" p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md">
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-6">Actions</h2>
                 <div className="flex justify-center">
-                    <button onClick={handleEmailVerification} className="w-full sm:w-auto px-6 py-2.5 bg-green-600 text-white font-medium rounded-lg shadow-md hover:bg-green-700 focus:ring-4 focus:ring-green-300">
+                    <button onClick={handleEmailVerification} className="w-full sm:w-auto px-6 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg shadow-md focus:ring-4 focus:ring-green-300">
                         Verify Email
                     </button>
                 </div>
