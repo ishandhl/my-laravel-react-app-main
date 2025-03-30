@@ -201,7 +201,7 @@ export default function Project_View() {
                                                         Pick a Reward
                                                     </button>
                                                 ) : (
-                                                    <button onClick={InitiatePaymentCrowdfund} className="bg-yellow-400 hover:opacity-80 text-white font-bold py-2 px-10 rounded w-full md:mr-2">
+                                                    <button onClick={InitiatePaymentCrowdfund} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded w-full md:mr-2">
                                                         Donate
                                                     </button>
                                                 )}
@@ -218,8 +218,8 @@ export default function Project_View() {
 
                 <article className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-12 rounded">
                     <div className="col-span-1">
-                        <div className="p-4 md:p-8 rounded-lg bg-yellow-50 opacity-90 overflow-auto h-96">
-                            <h2 className="text-4xl font-bold text-yellow-400 mb-4">About Project</h2>
+                        <div className="p-4 md:p-8 rounded-lg bg-gray-100 opacity-90 overflow-auto h-96">
+                            <h2 className="text-4xl font-bold text-black-200 mb-4">About Project</h2>
                             <p className="text-lg text-xl text-center">{project.description}</p>
                         </div>
                     </div>
@@ -227,7 +227,7 @@ export default function Project_View() {
 
                 {/* Updates Section */}
                 {project && Object.keys(project).length > 0 ? (
-                    <div className="bg-white-100 opacity-80 p-4 rounded-lg mt-8">
+                    <div className="bg-gray-100 opacity-80 p-4 rounded-lg mt-8">
                         <h2 className="text-lg font-bold mb-4 text-black">Progress and Discussions</h2>
                         <div className="grid gap-4">
                             <div className="bg-white-100 opacity-80 p-6 rounded-lg">
