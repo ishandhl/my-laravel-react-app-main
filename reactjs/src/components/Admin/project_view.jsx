@@ -12,7 +12,7 @@ export default function ProjectView() {
     const [genre, setGenre] = useState(''); // State for project genre
     const [projectStatus, setProjectStatus] = useState('pending'); // State for project status
     const [reports, setReports] = useState([]);
-
+    const [showPopup, setShowPopup] = useState(false);
     useEffect(() => {
         http.get('/projects/genre')
             .then((response) => {
@@ -68,6 +68,7 @@ export default function ProjectView() {
             }
         ).then((response) => {
             console.log(response);
+            setShowPopup(true);
         }
         ).catch((error) => {
             console.log(error);
@@ -167,6 +168,20 @@ export default function ProjectView() {
                         </select>
                     </div>
                     <button type="submit" onClick={updateProject} className="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
+                    {/* Popup Modal */}
+                    {showPopup && (
+                        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+                            <div className="bg-white p-6 rounded-lg shadow-lg">
+                                <p className="text-lg font-semibold">Project status updated successfully!</p>
+                                <button 
+                                    onClick={() => setShowPopup(false)} 
+                                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md"
+                                >
+                                    OK
+                                </button>
+                            </div>
+                        </div>
+                    )}
                     <div>
                         <h2 className="text-3xl font-bold mb-4 text-center text-black-600">Project Creator Details</h2>
                         <Link to={`/admin/users/edit/${project.creator_id}`} className="text-blue-500">
