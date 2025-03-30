@@ -24,11 +24,11 @@ export default function User_Projects() {
     };
 
     return (
-        <div className="bg-yellow-50 flex flex-col items-center min-h-screen py-10 px-4">
+        <div className="bg-gray-100 flex flex-col items-center min-h-screen py-10 px-4">
             <div className="w-full max-w-7xl backdrop-blur-sm bg-white/40 p-6 rounded-lg">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-6">
                     <h2 className="text-2xl font-semibold mb-4 md:mb-0">My Projects</h2>
-                    <button onClick={handleNewProjectClick} className="flex items-center bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2 px-4 rounded-md transition-all">
+                    <button onClick={handleNewProjectClick} className="flex items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition-all">
                         <svg className="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                         </svg>
