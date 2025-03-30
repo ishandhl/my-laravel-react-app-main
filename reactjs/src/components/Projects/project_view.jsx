@@ -176,14 +176,14 @@ export default function Project_View() {
                     {/* Details Column */}
                     <div className="md:col-span-1">
                         <div className="p-4 md:p-8">
-                            <div className="bg-yellow-400 opacity-90 rounded-lg p-6 h-96">
-                                <h1 className="text-4xl font-bold text-white">
+                            <div className="bg-white opacity-90 rounded-lg p-6 h-96">{/* card outer part */}
+                                <h1 className="text-4xl font-bold text-balck">
                                     Rs. {project.total_amount_raised} raised of Rs. {project.funding_goal}
                                 </h1>
-                                <div className="bg-white rounded-lg shadow-md p-4 mt-4">
+                                <div className="bg-gray-100 rounded-lg shadow-md p-4 mt-4">
                                     {/* Progress Bar */}
-                                    <div className="h-4 bg-gray-200 rounded-md mt-2">
-                                        <div className="h-full bg-green-500 rounded-md" style={{ width: `${fundingPercentage}%` }}></div>
+                                    <div className="h-4 bg-gray-300 rounded-md mt-2">
+                                        <div className="h-full bg-green-500 rounded-md" style={{ width: `${Math.min(fundingPercentage, 100)}%` }}></div>
                                     </div>
                                     <div className="mt-4 mb-8 text-xl">
                                         <p className="font-semibold">Total Backers:</p>
@@ -227,10 +227,10 @@ export default function Project_View() {
 
                 {/* Updates Section */}
                 {project && Object.keys(project).length > 0 ? (
-                    <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mt-8">
-                        <h2 className="text-lg font-semibold mb-4 text-white">Progress and Discussions</h2>
+                    <div className="bg-white-100 opacity-80 p-4 rounded-lg mt-8">
+                        <h2 className="text-lg font-bold mb-4 text-black">Progress and Discussions</h2>
                         <div className="grid gap-4">
-                            <div className="bg-yellow-400 opacity-80 p-6 rounded-lg">
+                            <div className="bg-white-100 opacity-80 p-6 rounded-lg">
                                 <div className="grid grid-cols-1 gap-6">
                                     {updates.map((update, index) => (
                                         <div key={index} className="bg-white p-4 rounded-lg shadow-md relative">
