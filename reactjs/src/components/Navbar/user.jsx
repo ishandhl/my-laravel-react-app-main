@@ -10,6 +10,7 @@ import Payment_Handling from '../Projects/payment_handling';
 import InvolvedProjects from '../User/involved_projects';
 import Profile from '../User/user_profile';
 import AboutUs from '../Projects/about_us';
+import Blog from '../Projects/Blog';
 import ProjectsAll from '../Projects/projects_all';
 import { AiOutlineUser } from 'react-icons/ai';
 import Footer from './footer';
@@ -99,6 +100,7 @@ export default function UserNav() {
                     <Route path="/project/:project_id/edit" element={<Project_Edit />} />
                     <Route path="/payment" element={<Payment_Handling />} />
                     <Route path='/about_us' element={<AboutUs />} />
+                    <Route path='/blog' element={<Blog />} />
                 </Routes>
             </div>
             <Footer />
