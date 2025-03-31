@@ -22,7 +22,7 @@ export default function Footer() {
                 <Link to="/about_us" className="hover:text-blue-400 transition-colors">About Us</Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
+                <Link to="/ContactUs" className="hover:text-blue-400 transition-colors">ContactUs</Link>
               </li>
               <li>
                 <Link to="/blog" className="hover:text-blue-400 transition-colors">Blog</Link>
