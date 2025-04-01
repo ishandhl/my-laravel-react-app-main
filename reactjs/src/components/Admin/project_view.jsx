@@ -198,7 +198,7 @@ export default function ProjectView() {
                         reports.map((report, index) => (
                             <div key={index} className="bg-white p-4 rounded-lg shadow-md">
                                 <h3 className="text-lg font-semibold mb-2 text-yellow-600">Reported By:<br />
-                                    UserID: {report.userID}<br />
+                                    UserID: {report.userid}<br />
                                     User: {report.user}</h3>
                                 <p>{report.report}</p>
                                 <p>Reported On: {report.created_at}</p>

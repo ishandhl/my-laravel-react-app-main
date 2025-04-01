@@ -233,7 +233,7 @@ export default function Project_Edit_View() {
         const formData = new FormData();
         formData.append('title', newRewardTitle);
         formData.append('description', newRewardDescription);
-        formData.append('amount', newRewardAmount);
+        formData.append('minimumamount', newRewardAmount);
         formData.append('estimated_delivery', newRewardDeliveryDate);
         formData.append('projectID', project_id);
         formData.append('reward_image', newRewardImage);

@@ -118,9 +118,19 @@ class ProjectController extends Controller
 
     public function reports(Request $request)
     {
-        $reports = Reports::where('projectID', $request->id)->get();
-        $user = User::find($reports[0]->userID);
-        $reports[0]->user = $user->name;
+     $reports = Reports::where('projectID', $request->id)->get(); 
+ 
+         if ($reports->isNotEmpty()) {
+             $user = User::find($reports[0]['userid']);
+         
+             // Check if user exists before trying to access the 'name' property
+             if ($user) {
+                 $reports[0]->user = $user->name;
+             } else {
+                 // Handle the case where the user doesn't exist (maybe set a default name or null)
+                 $reports[0]->user = 'User not found'; // You can customize this based on your needs
+             }
+         }
 
         return response()->json([
             'reports' => $reports

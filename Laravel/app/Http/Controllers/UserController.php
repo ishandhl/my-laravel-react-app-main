@@ -125,7 +125,7 @@ class UserController extends Controller
                 $reward = Rewards::create([
                     'title' => $rewardData['title'],
                     'description' => $rewardData['description'],
-                    'amount' => is_numeric((float)$rewardData['amount']) ? $rewardData['amount'] : null,
+                    'minimumamount' => is_numeric((float)$rewardData['amount']) ? $rewardData['amount'] : null,
                     'estimated_delivery' => $rewardData['delivery'],
                     'projectID' => $project->projectID,
                     'reward_image' => '' // Default value for reward_image
@@ -297,7 +297,7 @@ class UserController extends Controller
         $reward = Rewards::create([
             'title' => $request->title,
             'description' => $request->description,
-            'amount' => $request->amount,
+            'minimumamount' => $request->minimumamount,
             'estimated_delivery' => $request->estimated_delivery,
             'projectID' => $request->projectID,
             'reward_image' => ''

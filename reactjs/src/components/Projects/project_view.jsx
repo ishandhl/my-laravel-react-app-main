@@ -91,7 +91,7 @@ export default function Project_View() {
             {
                 "return_url": "http://localhost:3000/payment/",
                 "website_url": "http://localhost:3000/",
-                "amount": reward.amount * 100,
+                "amount": reward.minimumamount * 100,
                 "purchase_order_id": 'userid_' + user.id + '_projectid_' + project.projectID + "_rewarded_" + rewardID,
                 "purchase_order_name": 'rewarded_' + project.project_title,
                 "customer_info": {
@@ -308,7 +308,7 @@ export default function Project_View() {
                                             {project.rewards.map((reward, index) => (
                                                 <div key={index} className="bg-white rounded-lg p-4 shadow-md mb-4">
                                                     <div className="mb-4">
-                                                        <p className="font-semibold">Title:</p>
+                                                    <p className="font-semibold test">Title:</p>
                                                         <p>{reward.title}</p>
                                                     </div>
                                                     <div className="mb-4">
@@ -321,7 +321,7 @@ export default function Project_View() {
                                                     </div>
                                                     <div className="mb-4">
                                                         <p className="font-semibold">Amount:</p>
-                                                        <p>{reward.amount}</p>
+                                                        <p>{reward.minimumamount}</p>
                                                     </div>
                                                     <div className="mb-4">
                                                         <p className="font-semibold">Delivery:</p>

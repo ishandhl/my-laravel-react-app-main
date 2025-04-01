@@ -13,7 +13,6 @@ class Rewards extends Model
     protected $fillable = [
         'title',
         'description',
-        'amount',
         'minimumamount',
         'estimated_delivery',
         'projectID',
