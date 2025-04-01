@@ -54,10 +54,10 @@ export default function Footer() {
         <div className="mt-8 border-t border-gray-300 pt-4 text-center">
           <ul className="flex justify-center space-x-6 text-sm text-gray-600">
             <li>
-              <Link to="/privacy-policy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
+              <Link to="/PrivacyPolicy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
             </li>
             <li>
-              <Link to="/terms-of-service" className="hover:text-blue-500 transition-colors">Terms of Service</Link>
+              <Link to="/TermOfService" className="hover:text-blue-500 transition-colors">Terms of Service</Link>
             </li>
             <li>
               <Link to="/sitemap" className="hover:text-blue-500 transition-colors">Sitemap</Link>

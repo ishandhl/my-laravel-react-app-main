@@ -15,6 +15,8 @@ import ContactUs from '../Projects/ContactUs';
 import ProjectsAll from '../Projects/projects_all';
 import { AiOutlineUser } from 'react-icons/ai';
 import Footer from './footer';
+import PrivacyPolicy from '../Projects/PrivacyPolicy';
+import TermsOfService from '../Projects/TermOfService';
 
 export default function UserNav() {
     const { user, token, logout } = AuthUser();
@@ -103,6 +105,9 @@ export default function UserNav() {
                     <Route path='/about_us' element={<AboutUs />} />
                     <Route path='/blog' element={<Blog />} />
                     <Route path='/ContactUs' element={<ContactUs />} />
+                    <Route path='/TermOfService' element={<PrivacyPolicy />} />
+                    <Route path='/PrivacyPolicy' element={<TermsOfService />} />
+
                 </Routes>
             </div>
             <Footer />

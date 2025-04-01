@@ -14,6 +14,7 @@ class Rewards extends Model
         'title',
         'description',
         'amount',
+        'minimumamount',
         'estimated_delivery',
         'projectID',
         'reward_image'

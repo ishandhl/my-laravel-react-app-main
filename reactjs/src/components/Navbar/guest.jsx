@@ -9,6 +9,8 @@ import AboutUs from '../Projects/about_us';
 import ProjectsAll from '../Projects/projects_all';
 import PasswordReset from '../Authentication/password_reset';
 import Blog from '../Projects/Blog';
+import PrivacyPolicy from '../Projects/PrivacyPolicy';
+import TermsOfService from '../Projects/TermOfService';
 import Footer from './footer';
 import ContactUs from '../Projects/ContactUs';
 export default function GuestNav() {
@@ -40,6 +42,8 @@ export default function GuestNav() {
           <Route path='/password_reset' element={<PasswordReset />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/ContactUs' element={<ContactUs />} />
+          <Route path='/PrivacyPolicy' element={<PrivacyPolicy />} />
+          <Route path='/TermOfService' element={<TermsOfService />} />
         </Routes>
       </div>
 
