@@ -176,14 +176,14 @@ export default function Project_View() {
                     {/* Details Column */}
                     <div className="md:col-span-1">
                         <div className="p-4 md:p-8">
-                            <div className="bg-white opacity-90 rounded-lg p-6 h-96">{/* card outer part */}
-                                <h1 className="text-4xl font-bold text-balck">
+                            <div className="bg-yellow-400 opacity-90 rounded-lg p-6 h-96">
+                                <h1 className="text-4xl font-bold text-white">
                                     Rs. {project.total_amount_raised} raised of Rs. {project.funding_goal}
                                 </h1>
-                                <div className="bg-gray-100 rounded-lg shadow-md p-4 mt-4">
+                                <div className="bg-white rounded-lg shadow-md p-4 mt-4">
                                     {/* Progress Bar */}
-                                    <div className="h-4 bg-gray-300 rounded-md mt-2">
-                                        <div className="h-full bg-green-500 rounded-md" style={{ width: `${Math.min(fundingPercentage, 100)}%` }}></div>
+                                    <div className="h-4 bg-gray-200 rounded-md mt-2">
+                                        <div className="h-full bg-green-500 rounded-md max-w-full" style={{ width: `${fundingPercentage}%` }}></div>
                                     </div>
                                     <div className="mt-4 mb-8 text-xl">
                                         <p className="font-semibold">Total Backers:</p>
@@ -201,7 +201,7 @@ export default function Project_View() {
                                                         Pick a Reward
                                                     </button>
                                                 ) : (
-                                                    <button onClick={InitiatePaymentCrowdfund} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded w-full md:mr-2">
+                                                    <button onClick={InitiatePaymentCrowdfund} className="bg-yellow-400 hover:opacity-80 text-white font-bold py-2 px-10 rounded w-full md:mr-2">
                                                         Donate
                                                     </button>
                                                 )}
@@ -218,8 +218,8 @@ export default function Project_View() {
 
                 <article className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-12 rounded">
                     <div className="col-span-1">
-                        <div className="p-4 md:p-8 rounded-lg bg-gray-100 opacity-90 overflow-auto h-96">
-                            <h2 className="text-4xl font-bold text-black-200 mb-4">About Project</h2>
+                        <div className="p-4 md:p-8 rounded-lg bg-yellow-50 opacity-90 overflow-auto h-96">
+                            <h2 className="text-4xl font-bold text-yellow-400 mb-4">About Project</h2>
                             <p className="text-lg text-xl text-center">{project.description}</p>
                         </div>
                     </div>
@@ -227,10 +227,10 @@ export default function Project_View() {
 
                 {/* Updates Section */}
                 {project && Object.keys(project).length > 0 ? (
-                    <div className="bg-gray-100 opacity-80 p-4 rounded-lg mt-8">
-                        <h2 className="text-lg font-bold mb-4 text-black">Progress and Discussions</h2>
+                    <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mt-8">
+                        <h2 className="text-lg font-semibold mb-4 text-white">Progress and Discussions</h2>
                         <div className="grid gap-4">
-                            <div className="bg-white-100 opacity-80 p-6 rounded-lg">
+                            <div className="bg-yellow-400 opacity-80 p-6 rounded-lg">
                                 <div className="grid grid-cols-1 gap-6">
                                     {updates.map((update, index) => (
                                         <div key={index} className="bg-white p-4 rounded-lg shadow-md relative">
@@ -302,48 +302,53 @@ export default function Project_View() {
                                 <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
                                 <div className="inline-block align-bottom bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                                     {/* Rewards Section */}
-                                    {project.rewards && project.rewards.length > 0 && (
+                                    {project.rewards && project.rewards.length > 0 ? (
                                         <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mb-4">
-                                            <h2 className="text-lg font-semibold mb-2 text-white-600">Rewards</h2>
-                                            {project.rewards.map((reward, index) => (
-                                                <div key={index} className="bg-white rounded-lg p-4 shadow-md mb-4">
-                                                    <div className="mb-4">
-                                                    <p className="font-semibold test">Title:</p>
-                                                        <p>{reward.title}</p>
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <p className="font-semibold">Image:</p>
-                                                        <img src={`http://localhost:8000/${reward.reward_image}`} alt="Reward Image" className="w-40 h-40 rounded" />
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <p className="font-semibold">Description:</p>
-                                                        <p>{reward.description}</p>
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <p className="font-semibold">Amount:</p>
-                                                        <p>{reward.minimumamount}</p>
-                                                    </div>
-                                                    <div className="mb-4">
-                                                        <p className="font-semibold">Delivery:</p>
-                                                        <p>{reward.estimated_delivery}</p>
-                                                    </div>
-                                                    <button onClick={() => investPay(reward)} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-8 rounded w-full mb-2 md:mb-0 md:mr-2">
-                                                        Get
-                                                    </button>
-                                                </div>
-                                            ))}
+                                        <h2 className="text-lg font-semibold mb-2 text-white-600">Rewards</h2>
+                                        {project.rewards.map((reward, index) => (
+                                            <div key={index} className="bg-white rounded-lg p-4 shadow-md mb-4">
+                                            <div className="mb-4">
+                                                <p className="font-semibold">Title:</p>
+                                                <p>{reward.title}</p>
+                                            </div>
+                                            <div className="mb-4 flex justify-center items-center">
+                                                <img src={`http://localhost:8000/${reward.reward_image}`} alt="Reward Image" className="w-40 h-40 rounded" />
+                                            </div>
+                                            <div className="mb-4">
+                                                <p className="font-semibold">Description:</p>
+                                                <p>{reward.description}</p>
+                                            </div>
+                                            <div className="mb-4">
+                                                <p className="font-semibold">Amount:</p>
+                                                <p>{reward.minimumamount}</p>
+                                            </div>
+                                            <div className="mb-4">
+                                                <p className="font-semibold">Delivery:</p>
+                                                <p>{reward.estimated_delivery}</p>
+                                            </div>
+                                            <button onClick={() => investPay(reward)} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-8 rounded w-full mb-2 md:mb-0 md:mr-2">
+                                                Get
+                                            </button>
+                                            </div>
+                                        ))}
+                                        </div>
+                                    ) : (
+                                        <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mb-4">
+                                        <p className="text-lg font-semibold text-white-600">No rewards are available for this project at the moment.</p>
                                         </div>
                                     )}
+                                    
                                     <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                         <button
-                                            type="button"
-                                            onClick={() => setShowModalInvest(false)}
-                                            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                                        type="button"
+                                        onClick={() => setShowModalInvest(false)}
+                                        className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
                                         >
-                                            Close
+                                        Close
                                         </button>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     )
