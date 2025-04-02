@@ -20,7 +20,7 @@ export default function Home() {
   const shuffledProjects = projects.sort(() => Math.random() - 0.5);
   const featuredProject =
     shuffledProjects.length > 0 ? shuffledProjects[0] : null;
-  const randomProjects = shuffledProjects.slice(1, 7);
+  const randomProjects = shuffledProjects.slice(1);
 
   return (
     <div className="min-h-screen">
@@ -50,9 +50,11 @@ export default function Home() {
       <div className="py-16 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">
-            <span className="border-b-4 border-blue-500 pb-2">Featured Project</span>
+            <span className="border-b-4 border-blue-500 pb-2">
+              Featured Project
+            </span>
           </h2>
-          
+
           {featuredProject && (
             <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-16 max-w-5xl mx-auto">
               <div className="md:flex">
@@ -65,21 +67,29 @@ export default function Home() {
                 </div>
                 <div className="md:w-1/2 p-6 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-2xl font-bold mb-4">{featuredProject.project_title}</h3>
-                    <p className="text-gray-700 mb-6">{featuredProject.short_description}</p>
-                    
+                    <h3 className="text-2xl font-bold mb-4">
+                      {featuredProject.project_title}
+                    </h3>
+                    <p className="text-gray-700 mb-6">
+                      {featuredProject.short_description}
+                    </p>
+
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="bg-blue-50 p-3 rounded-lg">
                         <p className="text-gray-500 text-sm">Ending On</p>
-                        <p className="font-semibold">{featuredProject.end_date.split("T")[0]}</p>
+                        <p className="font-semibold">
+                          {featuredProject.end_date.split("T")[0]}
+                        </p>
                       </div>
                       <div className="bg-green-50 p-3 rounded-lg">
                         <p className="text-gray-500 text-sm">Goal</p>
-                        <p className="font-semibold">Rs. {featuredProject.funding_goal}</p>
+                        <p className="font-semibold">
+                          Rs. {featuredProject.funding_goal}
+                        </p>
                       </div>
                     </div>
                   </div>
-                  
+
                   <Link
                     to={`/project/${featuredProject.projectID}`}
                     className="bg-blue-500 hover:bg-blue-600 text-white text-center font-bold py-3 px-6 rounded-lg transition duration-300"
@@ -93,9 +103,11 @@ export default function Home() {
 
           {/* More Projects Section */}
           <h2 className="text-3xl font-bold mb-8 text-center">
-            <span className="border-b-4 border-blue-500 pb-2">Discover More</span>
+            <span className="border-b-4 border-blue-500 pb-2">
+              Discover More
+            </span>
           </h2>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {randomProjects.map((project) => (
               <div
@@ -111,12 +123,18 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-5">
-                    <h5 className="text-lg font-bold mb-3 line-clamp-1">{project.project_title}</h5>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{project.short_description}</p>
-                    
+                    <h5 className="text-lg font-bold mb-3 line-clamp-1">
+                      {project.project_title}
+                    </h5>
+                    <p className="text-gray-600 mb-4 line-clamp-2">
+                      {project.short_description}
+                    </p>
+
                     <div className="flex justify-between items-center text-sm border-t pt-4">
                       <div>
-                        <span className="font-medium text-gray-500">Ending:</span>{" "}
+                        <span className="font-medium text-gray-500">
+                          Ending:
+                        </span>{" "}
                         <span>{project.end_date.split("T")[0]}</span>
                       </div>
                       <div>
@@ -129,11 +147,14 @@ export default function Home() {
               </div>
             ))}
           </div>
-          
+
           <div className="mt-12 text-center">
             <Link
               to="/projects/all"
               className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
             >
               Explore All Projects
             </Link>

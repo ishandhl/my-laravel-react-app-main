@@ -13,7 +13,7 @@ import AboutUs from '../Projects/about_us';
 import Blog from '../Projects/Blog';
 import ContactUs from '../Projects/ContactUs';
 import ProjectsAll from '../Projects/projects_all';
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser, AiOutlineMenu, AiOutlineClose, AiOutlineProject, AiOutlineTeam, AiOutlineLogout } from 'react-icons/ai';
 import Footer from './footer';
 import PrivacyPolicy from '../Projects/PrivacyPolicy';
 import TermsOfService from '../Projects/TermOfService';
@@ -21,8 +21,9 @@ import TermsOfService from '../Projects/TermOfService';
 export default function UserNav() {
     const { user, token, logout } = AuthUser();
     const navigate = useNavigate();
-    const dropdownRef = useRef(null); // Ref for the dropdown
+    const dropdownRef = useRef(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const logoutUser = () => {
         if (token !== undefined) {
@@ -35,7 +36,10 @@ export default function UserNav() {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    // Function to close the dropdown when clicking on a menu item
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
     const closeDropdown = () => {
         setIsDropdownOpen(false);
     };
@@ -56,42 +60,191 @@ export default function UserNav() {
     }, []);
 
     return (
-        <div className="App">
-            <nav className="bg-white shadow-lg py-1">
-                <div className="flex justify-between items-center py-4 container mx-auto">
-                    <div>
-                        <Link to="/">
-                            <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
-                        </Link>{/* [#7B5BF5] via-[#3A3478] to-[#49D8D4] */}
-                    </div>
-                    <Link to="/" className="text-transparent bg-gradient-to-r from-[#49D8D4] via-[#3A3478] to-[#7B5BF5] bg-clip-text text-3xl font-extrabold block ml-20 mr-1">Ujyalo</Link>
-                    <div className="hidden md:flex items-center space-x-8">
-                        {/* Dropdown menu */}
-                        <div className="relative group mx-4" ref={dropdownRef}>
-                            <button onClick={toggleDropdown} className="text-gray-800 group-hover:text-blue-500 focus:outline-none flex items-center">
-                                <AiOutlineUser className="text-2xl mr-1" />
+        <div className="App min-h-screen flex flex-col">
+            <nav className="bg-white shadow-lg sticky top-0 z-50">
+                <div className="container mx-auto px-4">
+                    <div className="flex justify-between items-center py-3">
+                        {/* Logo Only*/}
+                        <div className="flex items-center">
+                            <Link to="/" className="flex items-center">
+                                <img 
+                                    src={require('./logo.png')} 
+                                    className="w-24 h-24 object-contain -my-5" 
+                                    alt="Logo" 
+                                />
+                            </Link>
+                        </div>
+
+                        {/* Desktop Navigation Links */}
+                        <div className="hidden md:flex items-center space-x-8">
+                            <Link to="/projects/all" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                                Projects
+                            </Link>
+                            <Link to="/blog" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                                Blog
+                            </Link>
+                            <Link to="/about_us" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                                About Us
+                            </Link>
+                            <Link to="/ContactUs" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                                Contact
+                            </Link>
+                            
+                            {/* User Dropdown */}
+                            <div className="relative group" ref={dropdownRef}>
+                                <button 
+                                    onClick={toggleDropdown} 
+                                    className="flex items-center space-x-1 text-gray-700 hover:text-[#3A3478] p-1 rounded-full focus:outline-none"
+                                >
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#49D8D4] to-[#7B5BF5] flex items-center justify-center">
+                                        <AiOutlineUser className="text-white text-xl" />
+                                    </div>
+                                </button>
+                                
+                                {isDropdownOpen && (
+                                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 z-50">
+                                        <div className="px-4 py-3 border-b border-gray-100">
+                                            <p className="text-sm font-medium text-gray-900">Signed in as {user.name}</p>
+                                        </div>
+                                        
+                                        <div className="py-1">
+                                            <Link 
+                                                to={`/${user.name}/my_projects`} 
+                                                onClick={closeDropdown} 
+                                                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                                            >
+                                                <AiOutlineProject className="mr-2 text-[#3A3478]" />
+                                                My Projects
+                                            </Link>
+                                            
+                                            <Link 
+                                                to={`/${user.name}/involved_projects`} 
+                                                onClick={closeDropdown} 
+                                                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                                            >
+                                                <AiOutlineTeam className="mr-2 text-[#3A3478]" />
+                                                Involved Projects
+                                            </Link>
+                                            
+                                            <Link 
+                                                to={`/profile/${user.id}`} 
+                                                onClick={closeDropdown} 
+                                                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                                            >
+                                                <AiOutlineUser className="mr-2 text-[#3A3478]" />
+                                                Profile
+                                            </Link>
+                                        </div>
+                                        
+                                        <div className="py-1 border-t border-gray-100">
+                                            <button
+                                                onClick={() => { logoutUser(); closeDropdown(); }}
+                                                className="flex items-center w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                                            >
+                                                <AiOutlineLogout className="mr-2 text-red-500" />
+                                                Logout
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Mobile menu button */}
+                        <div className="md:hidden flex items-center">
+                            <button 
+                                onClick={toggleMobileMenu}
+                                className="text-gray-700 hover:text-[#3A3478] focus:outline-none"
+                            >
+                                {isMobileMenuOpen ? 
+                                    <AiOutlineClose className="h-6 w-6" /> : 
+                                    <AiOutlineMenu className="h-6 w-6" />
+                                }
                             </button>
-                            {isDropdownOpen && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-md z-10">
-                                    <Link to={`/${user.name}/my_projects`} onClick={closeDropdown} className="flex items-center p-2 text-gray-900 rounded-lg hover:text-blue-500">
-                                        <span className="flex-1 ms-3 whitespace-nowrap text-start">My Projects</span>
-                                    </Link>
-                                    <Link to={`/${user.name}/involved_projects`} onClick={closeDropdown} className="flex items-center p-2 text-gray-900 rounded-lg hover:text-blue-500">
-                                        <span className="flex-1 ms-3 whitespace-nowrap text-start">Involved Projects</span>
-                                    </Link>
-                                    <Link to={`/profile/${user.id}`} onClick={closeDropdown} className="flex items-center p-2 text-gray-900 rounded-lg hover:text-blue-500">
-                                        <span className="flex-1 ms-3 whitespace-nowrap text-start">Profile</span>
-                                    </Link>
-                                    <Link onClick={() => { logoutUser(); closeDropdown(); }} to={'/login'} className="block px-2 py-2 text-gray-700 hover:text-blue-500 flex items-center">
-                                        <span className="flex-1 ms-3 whitespace-nowrap text-start">Logout</span>
-                                    </Link>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
+
+                {/* Mobile Menu */}
+                {isMobileMenuOpen && (
+                    <div className="md:hidden bg-white shadow-inner py-2">
+                        <div className="container mx-auto px-4 space-y-1">
+                            <Link 
+                                to="/projects/all"
+                                onClick={toggleMobileMenu}
+                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >
+                                Projects
+                            </Link>
+                            <Link 
+                                to="/blog"
+                                onClick={toggleMobileMenu}
+                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >
+                                Blog
+                            </Link>
+                            <Link 
+                                to="/about_us"
+                                onClick={toggleMobileMenu}
+                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >
+                                About Us
+                            </Link>
+                            <Link 
+                                to="/ContactUs"
+                                onClick={toggleMobileMenu}
+                                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >
+                                Contact
+                            </Link>
+                            
+                            <div className="pt-4 pb-3 border-t border-gray-200">
+                                <div className="flex items-center px-3">
+                                    <div className="flex-shrink-0">
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#49D8D4] to-[#7B5BF5] flex items-center justify-center">
+                                            <AiOutlineUser className="text-white text-xl" />
+                                        </div>
+                                    </div>
+                                    <div className="ml-3">
+                                        <div className="text-base font-medium text-gray-800">{user.name}</div>
+                                    </div>
+                                </div>
+                                <div className="mt-3 space-y-1 px-2">
+                                    <Link 
+                                        to={`/${user.name}/my_projects`}
+                                        onClick={toggleMobileMenu}
+                                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                                    >
+                                        My Projects
+                                    </Link>
+                                    <Link 
+                                        to={`/${user.name}/involved_projects`}
+                                        onClick={toggleMobileMenu}
+                                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                                    >
+                                        Involved Projects
+                                    </Link>
+                                    <Link 
+                                        to={`/profile/${user.id}`}
+                                        onClick={toggleMobileMenu}
+                                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                                    >
+                                        Profile
+                                    </Link>
+                                    <button
+                                        onClick={() => { logoutUser(); toggleMobileMenu(); }}
+                                        className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </nav>
-            <div>
+
+            <main className="flex-grow">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/profile/:id" element={<Profile />} />
@@ -107,9 +260,9 @@ export default function UserNav() {
                     <Route path='/ContactUs' element={<ContactUs />} />
                     <Route path='/TermOfService' element={<PrivacyPolicy />} />
                     <Route path='/PrivacyPolicy' element={<TermsOfService />} />
-
                 </Routes>
-            </div>
+            </main>
+
             <Footer />
         </div>
     );
