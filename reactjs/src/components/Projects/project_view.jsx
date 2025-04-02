@@ -176,8 +176,8 @@ export default function Project_View() {
                     {/* Details Column */}
                     <div className="md:col-span-1">
                         <div className="p-4 md:p-8">
-                            <div className="bg-yellow-400 opacity-90 rounded-lg p-6 h-96">
-                                <h1 className="text-4xl font-bold text-white">
+                            <div className="bg-gray-100 opacity-90 rounded-lg p-6 h-96">
+                                <h1 className="text-4xl font-bold text-black">
                                     Rs. {project.total_amount_raised} raised of Rs. {project.funding_goal}
                                 </h1>
                                 <div className="bg-white rounded-lg shadow-md p-4 mt-4">
@@ -201,7 +201,7 @@ export default function Project_View() {
                                                         Pick a Reward
                                                     </button>
                                                 ) : (
-                                                    <button onClick={InitiatePaymentCrowdfund} className="bg-yellow-400 hover:opacity-80 text-white font-bold py-2 px-10 rounded w-full md:mr-2">
+                                                    <button onClick={InitiatePaymentCrowdfund} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-10 rounded w-full md:mr-2">
                                                         Donate
                                                     </button>
                                                 )}
@@ -218,8 +218,8 @@ export default function Project_View() {
 
                 <article className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-12 rounded">
                     <div className="col-span-1">
-                        <div className="p-4 md:p-8 rounded-lg bg-yellow-50 opacity-90 overflow-auto h-96">
-                            <h2 className="text-4xl font-bold text-yellow-400 mb-4">About Project</h2>
+                        <div className="p-4 md:p-8 rounded-lg bg-gray-100 opacity-90 overflow-auto h-96">
+                            <h2 className="text-4xl font-bold text-black mb-4">About Project</h2>
                             <p className="text-lg text-xl text-center">{project.description}</p>
                         </div>
                     </div>
@@ -227,10 +227,10 @@ export default function Project_View() {
 
                 {/* Updates Section */}
                 {project && Object.keys(project).length > 0 ? (
-                    <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mt-8">
-                        <h2 className="text-lg font-semibold mb-4 text-white">Progress and Discussions</h2>
+                    <div className="bg-gray-100 opacity-80 p-4 rounded-lg mt-8">
+                        <h2 className="text-xl font-bold mb-4 text-black">Progress and Discussions</h2>
                         <div className="grid gap-4">
-                            <div className="bg-yellow-400 opacity-80 p-6 rounded-lg">
+                            <div className="bg-gray-100 opacity-80 p-6 rounded-lg">
                                 <div className="grid grid-cols-1 gap-6">
                                     {updates.map((update, index) => (
                                         <div key={index} className="bg-white p-4 rounded-lg shadow-md relative">
@@ -243,7 +243,7 @@ export default function Project_View() {
                         </div>
                     </div>
                 ) : (
-                    <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mt-8">
+                    <div className="bg-gray-100 opacity-80 p-4 rounded-lg mt-8">
                         <h2 className="text-lg font-semibold mb-4 text-white test">Progress and Discussions</h2>
                         <p className="text-white">No updates available</p>
                     </div>
@@ -303,12 +303,12 @@ export default function Project_View() {
                                 <div className="inline-block align-bottom bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                                     {/* Rewards Section */}
                                     {project.rewards && project.rewards.length > 0 ? (
-                                        <div className="bg-yellow-400 opacity-80 p-4 rounded-lg mb-4">
+                                        <div className="bg-gray-200 opacity-80 p-4 rounded-lg mb-4">
                                         <h2 className="text-lg font-semibold mb-2 text-white-600">Rewards</h2>
                                         {project.rewards.map((reward, index) => (
                                             <div key={index} className="bg-white rounded-lg p-4 shadow-md mb-4">
                                             <div className="mb-4">
-                                                <p className="font-semibold">Title:</p>
+                                                <p className="font-bold">Title:</p>
                                                 <p>{reward.title}</p>
                                             </div>
                                             <div className="mb-4 flex justify-center items-center">
