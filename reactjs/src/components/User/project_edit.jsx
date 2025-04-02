@@ -31,10 +31,10 @@ export default function Project_Edit_View() {
         // Fetch project details and updates...
 
         // Example of a successful response toast notification
-        toast.success('Project details fetched successfully!');
+      //  toast.success('Project details fetched successfully!');
 
         // Example of an error response toast notification
-        toast.error('Error fetching project details. Please try again later.');
+       // toast.error('Error fetching project details. Please try again later.');
 
     }, []);
 
@@ -53,10 +53,10 @@ export default function Project_Edit_View() {
                     const coverImageParts = projectData.cover_image.split('/');
                     setOriginalCoverImage(coverImageParts[1]);
                 }
-                toast.success('Project details fetched successfully!');
+               toast.success('Project details fetched successfully!');
             } catch (error) {
                 console.error(error);
-                toast.error('Error fetching project details. Please try again later.');
+                //toast.error('Error fetching project details. Please try again later.');
             }
         };
 
@@ -80,8 +80,8 @@ export default function Project_Edit_View() {
         handleSaveDetails();
         handleSaveImages();
 
-        toast.success('Project details saved successfully!');
-        toast.error('Error saving project details. Please try again later.');
+       toast.success('Project details saved successfully!');
+        //toast.error('Error saving project details. Please try again later.');
 
         setTimeout(() => {
             window.location.reload();
