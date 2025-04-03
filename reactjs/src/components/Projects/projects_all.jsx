@@ -36,6 +36,12 @@ export default function ProjectsAll() {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         return diffDays > 0 ? diffDays : 0;
     };
+    
+    // Function to calculate funding percentage
+    const calculateFundingPercentage = (amountRaised, fundingGoal) => {
+        const percentage = (parseFloat(amountRaised) / parseFloat(fundingGoal)) * 100;
+        return Math.min(percentage, 100).toFixed(2); // Cap at 100% and format to 2 decimal places
+    };
 
     // Filter and sort projects
     const getFilteredAndSortedProjects = () => {
@@ -149,55 +155,66 @@ export default function ProjectsAll() {
                 {
                     filteredAndSortedProjects.length > 0 ? (
                         <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-                            {filteredAndSortedProjects.map((project) => (
-                                <div key={project.projectID} className="rounded-xl shadow-lg overflow-hidden bg-white flex flex-col h-full transform transition duration-300 hover:shadow-xl hover:-translate-y-1"> 
-                                    <Link to={`/project/${project.projectID}`} className="block relative">
-                                        <img 
-                                            className="w-full h-56 object-cover" 
-                                            src={`http://localhost:8000/${project.cover_image}`} 
-                                            alt="Project Cover" 
-                                        />
-                                        <div className="absolute top-4 right-4 bg-white text-xs font-bold uppercase py-1 px-2 rounded-full shadow-md">
-                                            {project.type}
-                                        </div>
-                                    </Link>
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <div>
-                                            <h5 className="mb-3 text-xl font-bold leading-tight text-gray-800">
-                                                {project.project_title}
-                                            </h5>
-                                        </div>
-                                        <p className="mb-4 text-sm text-gray-600 line-clamp-3">
-                                            {project.short_description}
-                                        </p>
-                                        
-                                        {/* Progress bar */}
-                                        <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 mt-auto">
-                                            <div className="bg-blue-500 h-2.5 rounded-full" style={{ width: '45%' }}></div>
-                                        </div>
-                                        
-                                        <div className="flex justify-between text-sm text-gray-600 mb-4">
+                            {filteredAndSortedProjects.map((project) => {
+                                // Calculate funding percentage for this project
+                                const fundingPercentage = calculateFundingPercentage(
+                                    project.total_amount_raised || 0, 
+                                    project.funding_goal
+                                );
+                                
+                                return (
+                                    <div key={project.projectID} className="rounded-xl shadow-lg overflow-hidden bg-white flex flex-col h-full transform transition duration-300 hover:shadow-xl hover:-translate-y-1"> 
+                                        <Link to={`/project/${project.projectID}`} className="block relative">
+                                            <img 
+                                                className="w-full h-56 object-cover" 
+                                                src={`http://localhost:8000/${project.cover_image}`} 
+                                                alt="Project Cover" 
+                                            />
+                                            <div className="absolute top-4 right-4 bg-white text-xs font-bold uppercase py-1 px-2 rounded-full shadow-md">
+                                                {project.type}
+                                            </div>
+                                        </Link>
+                                        <div className="p-6 flex flex-col flex-grow">
                                             <div>
-                                                <span className="font-bold text-gray-800">Rs. {project.funding_goal}</span>
-                                                <p className="text-xs">Goal</p>
+                                                <h5 className="mb-3 text-xl font-bold leading-tight text-gray-800">
+                                                    {project.project_title}
+                                                </h5>
                                             </div>
-                                            <div className="text-right">
-                                                <span className="font-bold text-gray-800">{daysRemaining(project.end_date)}</span>
-                                                <p className="text-xs">Days Left</p>
+                                            <p className="mb-4 text-sm text-gray-600 line-clamp-3">
+                                                {project.short_description}
+                                            </p>
+                                            
+                                            {/* Dynamic Progress bar */}
+                                            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 mt-auto">
+                                                <div 
+                                                    className="bg-blue-500 h-2.5 rounded-full" 
+                                                    style={{ width: `${fundingPercentage}%` }}
+                                                ></div>
                                             </div>
-                                        </div>
-                                        
-                                        <div className="border-t pt-4 mt-auto">
-                                            <Link 
-                                                to={`/project/${project.projectID}`} 
-                                                className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-                                            >
-                                                View Project
-                                            </Link>
+                                            
+                                            <div className="flex justify-between text-sm text-gray-600 mb-4">
+                                                <div>
+                                                    <span className="font-bold text-gray-800">Rs. {project.total_amount_raised || 0}</span>
+                                                    <p className="text-xs">Raised of Rs. {project.funding_goal}</p>
+                                                </div>
+                                                <div className="text-right">
+                                                    <span className="font-bold text-gray-800">{daysRemaining(project.end_date)}</span>
+                                                    <p className="text-xs">Days Left</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="border-t pt-4 mt-auto">
+                                                <Link 
+                                                    to={`/project/${project.projectID}`} 
+                                                    className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                                                >
+                                                    View Project
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     ) : (
                         <div className="flex flex-col items-center justify-center h-64 bg-white rounded-lg shadow p-8">
