@@ -3,10 +3,10 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white-100 py-12">
+    <footer className="bg-gray-50 py-12 border-t border-gray-100">
       <div className="container mx-auto px-6 md:px-12">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-700">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="font-bold text-3xl text-gray-900">Ujyalo</h3>
@@ -14,35 +14,19 @@ export default function Footer() {
             <p className="text-sm">Your trusted source for Ujyalo projects and ideas.</p>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-lg text-gray-900">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about_us" className="hover:text-blue-400 transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/ContactUs" className="hover:text-blue-400 transition-colors">ContactUs</Link>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-blue-400 transition-colors">Blog</Link>
-              </li>
-            </ul>
-          </div>
-
           {/* Social Media Icons */}
-          <div className="space-y-4">
+          <div className="space-y-4 md:text-right">
             <h4 className="font-semibold text-lg text-gray-900">Follow Us</h4>
-            <div className="flex justify-center space-x-6">
-              <a href="#" className="hover:text-blue-400 transition-colors">
+            <div className="flex md:justify-end space-x-6">
+              <a href="#" className="text-gray-600 hover:text-blue-500 transition-colors">
                 <Facebook size={24} />
                 <span className="sr-only">Facebook</span>
               </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              <a href="#" className="text-gray-600 hover:text-pink-500 transition-colors">
                 <Instagram size={24} />
                 <span className="sr-only">Instagram</span>
               </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              <a href="#" className="text-gray-600 hover:text-blue-400 transition-colors">
                 <Twitter size={24} />
                 <span className="sr-only">Twitter</span>
               </a>
@@ -51,8 +35,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer (Privacy, Terms, etc.) */}
-        <div className="mt-8 border-t border-gray-300 pt-4 text-center">
-          <ul className="flex justify-center space-x-6 text-sm text-gray-600">
+        <div className="mt-8 border-t border-gray-200 pt-6 text-center">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-600">
+            <li>
+              <Link to="/blog" className="hover:text-blue-500 transition-colors">Blog</Link>
+            </li>
             <li>
               <Link to="/PrivacyPolicy" className="hover:text-blue-500 transition-colors">Privacy Policy</Link>
             </li>
