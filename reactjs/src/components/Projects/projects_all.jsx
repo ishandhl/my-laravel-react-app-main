@@ -17,15 +17,17 @@ export default function ProjectsAll() {
         http.get(url)
             .then((response) => {
                 setProjects(response.data.projects);
-                console.log(response.data.projects);
+                console.log('Fetched projects:', response.data.projects);
             })
             .catch((error) => {
                 console.error('Error fetching projects:', error);
             });
     };
 
+
     useEffect(() => {
         fetchProjects();
+
     }, [projectTypeFilter]); 
 
     // Function to calculate days remaining
@@ -110,7 +112,7 @@ export default function ProjectsAll() {
                             
                             {/* Type filter */}
                             <div className="w-full md:w-48">
-                                <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
+                                <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1"></label>
                                 <select
                                     id="projectType"
                                     name="projectType"
@@ -126,7 +128,7 @@ export default function ProjectsAll() {
                             
                             {/* Sort selector */}
                             <div className="w-full md:w-48">
-                                <label htmlFor="sortProjects" className="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+                                <label htmlFor="sortProjects" className="block text-sm font-medium text-gray-700 mb-1"></label>
                                 <select
                                     id="sortProjects"
                                     name="sortProjects"

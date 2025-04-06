@@ -56,6 +56,22 @@ class ProjectController extends Controller
     {
         $projects = Projects::all();
 
+        foreach ($projects as $project) {
+            //error_log('Project ID: ' . $project->projectID); // Log the ProjectID for debugging
+            $transaction = Transactions::where('projectID', $project->projectID)->get();
+
+            // Calculate total amount raised only if $transaction is not null
+            $totalAmount = 0;
+            if (!is_null($transaction)) {
+                $totalAmount = $transaction->reduce(function ($carry, $transaction) {
+                    return $carry + floatval($transaction->amount);
+                }, 0);
+            }
+
+            $project->total_transactions = count($transaction);
+            $project->total_amount_raised = $totalAmount;
+        }
+
         return response()->json([
             'projects' => $projects
         ]);
