@@ -353,8 +353,11 @@ class UserController extends Controller
 
     public function project_updates(Request $request)
     {
+        
         $projectUpdates = Updates::where('projectID', $request->id)->get();
+        
         return response()->json(['project_updates' => $projectUpdates], 200);
+
     }
 
     public function delete_update(Request $request)

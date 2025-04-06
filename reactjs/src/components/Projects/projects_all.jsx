@@ -24,10 +24,8 @@ export default function ProjectsAll() {
             });
     };
 
-
     useEffect(() => {
         fetchProjects();
-
     }, [projectTypeFilter]); 
 
     // Function to calculate days remaining
@@ -43,6 +41,16 @@ export default function ProjectsAll() {
     const calculateFundingPercentage = (amountRaised, fundingGoal) => {
         const percentage = (parseFloat(amountRaised) / parseFloat(fundingGoal)) * 100;
         return Math.min(percentage, 100).toFixed(2); // Cap at 100% and format to 2 decimal places
+    };
+
+    // Check if project is expired
+    const isProjectExpired = (endDate) => {
+        return daysRemaining(endDate) === 0;
+    };
+
+    // Check if goal has been reached
+    const hasReachedGoal = (amountRaised, fundingGoal) => {
+        return parseFloat(amountRaised) >= parseFloat(fundingGoal);
     };
 
     // Filter and sort projects
@@ -164,6 +172,10 @@ export default function ProjectsAll() {
                                     project.funding_goal
                                 );
                                 
+                                // Check status conditions
+                                const expired = isProjectExpired(project.end_date);
+                                const goalReached = hasReachedGoal(project.total_amount_raised || 0, project.funding_goal);
+                                
                                 return (
                                     <div key={project.projectID} className="rounded-xl shadow-lg overflow-hidden bg-white flex flex-col h-full transform transition duration-300 hover:shadow-xl hover:-translate-y-1"> 
                                         <Link to={`/project/${project.projectID}`} className="block relative">
@@ -172,7 +184,22 @@ export default function ProjectsAll() {
                                                 src={`http://localhost:8000/${project.cover_image}`} 
                                                 alt="Project Cover" 
                                             />
-                                            <div className="absolute top-4 right-4 bg-white text-xs font-bold uppercase py-1 px-2 rounded-full shadow-md">
+                                            {/* Status badges */}
+                                            <div className="absolute top-4 left-0 flex flex-col gap-2">
+                                                {expired && (
+                                                    <div className="bg-red-500 text-white text-xs font-bold py-1 px-4 rounded-r-full">
+                                                        Expired
+                                                    </div>
+                                                )}
+                                                {goalReached && (
+                                                    <div className="bg-green-500 text-white text-xs font-bold py-1 px-4 rounded-r-full">
+                                                        Goal Reached
+                                                    </div>
+                                                )}
+                                            </div>
+                                            
+                                            {/* Project type badge */}
+                                            <div className="absolute top-4 right-4 bg-blue-500 text-white text-xs font-bold uppercase py-1 px-3 rounded-full">
                                                 {project.type}
                                             </div>
                                         </Link>
@@ -189,7 +216,7 @@ export default function ProjectsAll() {
                                             {/* Dynamic Progress bar */}
                                             <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 mt-auto">
                                                 <div 
-                                                    className="bg-blue-500 h-2.5 rounded-full" 
+                                                    className={`${goalReached ? 'bg-green-500' : 'bg-blue-500'} h-2.5 rounded-full`}
                                                     style={{ width: `${fundingPercentage}%` }}
                                                 ></div>
                                             </div>
@@ -200,8 +227,17 @@ export default function ProjectsAll() {
                                                     <p className="text-xs">Raised of Rs. {project.funding_goal}</p>
                                                 </div>
                                                 <div className="text-right">
-                                                    <span className="font-bold text-gray-800">{daysRemaining(project.end_date)}</span>
-                                                    <p className="text-xs">Days Left</p>
+                                                    {expired ? (
+                                                        <div>
+                                                            <span className="font-bold text-red-500">Campaign Ended</span>
+                                                            <p className="text-xs">{goalReached ? '100% Funded' : `${fundingPercentage}% Funded`}</p>
+                                                        </div>
+                                                    ) : (
+                                                        <div>
+                                                            <span className="font-bold text-gray-800">{daysRemaining(project.end_date)}</span>
+                                                            <p className="text-xs">Days Left</p>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                             
