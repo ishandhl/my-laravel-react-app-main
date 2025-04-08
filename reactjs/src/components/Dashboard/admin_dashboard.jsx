@@ -19,14 +19,6 @@ export default function EnhancedDashboard() {
   const pieChartInstanceRef = useRef(null);
   const lineChartInstanceRef = useRef(null);
 
-  // Mock data for trends (you can replace this with real API data)
-  const mockMonthlyData = {
-    months: ['Jan', 'Feb', 'Mar', 'Apr'],
-    users: [120, 150, 180, 220, 280, 320],
-    projects: [10, 15, 18, 22, 25, 30],
-    transactions: [30, 45, 60, 75, 85, 100]
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -70,9 +62,6 @@ export default function EnhancedDashboard() {
       }
       if (pieChartInstanceRef.current) {
         pieChartInstanceRef.current.destroy();
-      }
-      if (lineChartInstanceRef.current) {
-        lineChartInstanceRef.current.destroy();
       }
     };
 
@@ -162,71 +151,10 @@ export default function EnhancedDashboard() {
       });
     };
 
-    // Create line chart for trends
-    const createLineChart = () => {
-      if (!lineChartRef.current) return;
-
-      const ctx = lineChartRef.current.getContext('2d');
-      lineChartInstanceRef.current = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: mockMonthlyData.months,
-          datasets: [
-            {
-              label: 'Users',
-              data: mockMonthlyData.users,
-              borderColor: 'rgba(59, 130, 246, 1)',
-              backgroundColor: 'rgba(59, 130, 246, 0.1)',
-              fill: true,
-              tension: 0.4
-            },
-            {
-              label: 'Projects',
-              data: mockMonthlyData.projects,
-              borderColor: 'rgba(16, 185, 129, 1)',
-              backgroundColor: 'rgba(16, 185, 129, 0.1)',
-              fill: true,
-              tension: 0.4
-            },
-            {
-              label: 'Transactions',
-              data: mockMonthlyData.transactions,
-              borderColor: 'rgba(139, 92, 246, 1)',
-              backgroundColor: 'rgba(139, 92, 246, 0.1)',
-              fill: true,
-              tension: 0.4
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: {
-            mode: 'index',
-            intersect: false,
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(0, 0, 0, 0.05)'
-              }
-            },
-            x: {
-              grid: {
-                display: false
-              }
-            }
-          }
-        }
-      });
-    };
-
     // Destroy existing charts and create new ones
     destroyCharts();
     createBarChart();
     createPieChart();
-    createLineChart();
 
     // Cleanup function
     return () => {
@@ -262,13 +190,6 @@ export default function EnhancedDashboard() {
           </div>
         ) : (
           <>
-            {/* Monthly Growth Trends at the top */}
-            <div className="bg-white p-6 rounded-lg shadow mb-8">
-              <h2 className="text-lg font-semibold text-gray-700 mb-4">Monthly Growth Trends</h2>
-              <div className="h-80">
-                <canvas ref={lineChartRef}></canvas>
-              </div>
-            </div>
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
