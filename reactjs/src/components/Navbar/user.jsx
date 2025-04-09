@@ -27,7 +27,7 @@ export default function UserNav() {
 
     const logoutUser = () => {
         if (token !== undefined) {
-            // logout();
+            logout();
            navigate("/login"); //checking for now this might work
         }
     };
