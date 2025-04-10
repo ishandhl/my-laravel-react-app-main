@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Home from '../Authentication/home';
+import Login from '../Authentication/login';
 import AuthUser from '../Authentication/AuthUser';
 import Project_Creation from '../User/create_project';
 import User_Projects from '../User/my_projects';
@@ -26,11 +27,11 @@ export default function UserNav() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const logoutUser = () => {
-        if (token !== undefined) {
+        if (token != undefined) {
             logout();
-           navigate("/login"); //checking for now this might work
+            navigate("/login");
         }
-    };
+    }
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -260,6 +261,7 @@ export default function UserNav() {
                     <Route path='/ContactUs' element={<ContactUs />} />
                     <Route path='/TermOfService' element={<PrivacyPolicy />} />
                     <Route path='/PrivacyPolicy' element={<TermsOfService />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </main>
 

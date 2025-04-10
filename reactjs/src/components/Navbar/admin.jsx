@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import AuthUser from '../Authentication/AuthUser';
+import Login from '../Authentication/login';
 import UserCRUD from "../Admin/userCRUD";
 import AdminDashboard from '../Dashboard/admin_dashboard';
 import ProjectCRUD from '../Admin/projectCRUD';
@@ -12,10 +13,11 @@ export default function AdminNav() {
     const navigate = useNavigate();
 
     const logoutUser = () => {
-        if (token != undefined) {
+        if (token !== undefined) {
             logout();
+            // This will now navigate to the top-level /login route
+            navigate("/login"); 
         }
-        navigate("/login");
     }
 
     return (
@@ -41,6 +43,7 @@ export default function AdminNav() {
                     <Route path="/admin/projects" element={<ProjectCRUD />} />
                     <Route path={`/admin/users/edit/:id`} element={<UserEDIT />} />
                     <Route path={`/admin/project/:id`} element={<ProjectView />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </div>
         </div>
