@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="flex-1 border-t-2 border-blue-200"></div>
         </div>
         
-        {/* Bottom Footer (Privacy, Terms, etc.) - Sitemap removed */}
+        {/* Bottom Footer (Privacy, Terms, etc.)*/}
         <div className="text-center">
           <ul className="inline-flex flex-wrap justify-center bg-blue-50 px-6 py-4 rounded-full shadow-md">
             <li>
@@ -64,7 +64,7 @@ export default function Footer() {
         
         {/* Footer note */}
         <div className="mt-6 text-center text-black text-sm">
-          Made with by the Ujyalo team
+          Made with by the Ujyalo team.
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, Link, useNavigate, Navigate } from 'react-router-dom';
 import AuthUser from '../Authentication/AuthUser';
 import Login from '../Authentication/login';
 import UserCRUD from "../Admin/userCRUD";
@@ -8,16 +8,43 @@ import ProjectCRUD from '../Admin/projectCRUD';
 import UserEDIT from '../Admin/userEDIT';
 import ProjectView from '../Admin/project_view';
 
+// Protected route component
+const ProtectedRoute = ({ element }) => {
+  const { token } = AuthUser();
+  return token ? element : <Navigate to="/login" />;
+};
+
 export default function AdminNav() {
     const { token, logout, user } = AuthUser();
     const navigate = useNavigate();
 
-    const logoutUser = () => {
-        if (token !== undefined) {
-            logout();
-            // This will now navigate to the top-level /login route
-            navigate("/login"); 
+    // If no token, redirect to login
+    useEffect(() => {
+        if (!token) {
+            navigate("/login");
         }
+    }, [token, navigate]);
+
+    const logoutUser = () => {
+        if (token) {
+            // First clear local storage
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            // Then call logout function which should update auth state
+            logout();
+            // Navigate after state is updated
+            navigate("/login", { replace: true });
+        }
+    }
+
+    // If not authenticated, don't render the admin nav
+    if (!token) {
+        return (
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="*" element={<Navigate to="/login" />} />
+            </Routes>
+        );
     }
 
     return (
@@ -25,7 +52,7 @@ export default function AdminNav() {
             {/* Sidebar */}
             <div className="p-2 bg-gray-800 text-white">
                 <div className="my-6">
-                    <h1 className="px-4 text-3xl font-bold">{`Welcome, ${user.name}`}</h1>
+                    <h1 className="px-4 text-3xl font-bold">{`Welcome, ${user?.name || 'Admin'}`}</h1>
                 </div>
                 <ul className="grid gap-2">
                     <NavItem to="/dashboard" icon="dashboard">Dashboard</NavItem>
@@ -38,12 +65,13 @@ export default function AdminNav() {
             {/* Main Content */}
             <div className="w-full px-4 py-2 bg-gray-200">
                 <Routes>
-                    <Route path="/dashboard" element={<AdminDashboard />} />
-                    <Route path="/admin/users" element={<UserCRUD />} />
-                    <Route path="/admin/projects" element={<ProjectCRUD />} />
-                    <Route path={`/admin/users/edit/:id`} element={<UserEDIT />} />
-                    <Route path={`/admin/project/:id`} element={<ProjectView />} />
+                    <Route path="/dashboard" element={<ProtectedRoute element={<AdminDashboard />} />} />
+                    <Route path="/admin/users" element={<ProtectedRoute element={<UserCRUD />} />} />
+                    <Route path="/admin/projects" element={<ProtectedRoute element={<ProjectCRUD />} />} />
+                    <Route path={`/admin/users/edit/:id`} element={<ProtectedRoute element={<UserEDIT />} />} />
+                    <Route path={`/admin/project/:id`} element={<ProtectedRoute element={<ProjectView />} />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="*" element={<Navigate to="/dashboard" />} />
                 </Routes>
             </div>
         </div>
