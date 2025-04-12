@@ -22,6 +22,30 @@ export default function Home() {
     shuffledProjects.length > 0 ? shuffledProjects[0] : null;
   const randomProjects = shuffledProjects.slice(1);
 
+  // Donation steps data
+  const donationSteps = [
+    {
+      icon: "🔍",
+      title: "Find a Project",
+      description: "Browse through our projects and find a cause you're passionate about."
+    },
+    {
+      icon: "👆",
+      title: "Select Amount",
+      description: "Choose how much you'd like to contribute to make a difference."
+    },
+    {
+      icon: "💳",
+      title: "Make Payment",
+      description: "Complete your donation securely using your preferred payment method."
+    },
+    {
+      icon: "📱",
+      title: "Track Impact",
+      description: "Receive updates about how your donation is helping the project."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <div className="relative">
@@ -44,6 +68,31 @@ export default function Home() {
           >
             Create Project
           </Link>
+        </div>
+      </div>
+
+      {/* How to Donate Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            <span className="border-b-4 border-blue-500 pb-2">
+              How to Donate
+            </span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {donationSteps.map((step, index) => (
+              <div 
+                key={index} 
+                className="bg-white p-6 rounded-xl shadow-md text-center transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-blue-50 cursor-pointer"
+              >
+                <div className="text-4xl mb-4 transition-transform duration-300 hover:scale-110 inline-block">{step.icon}</div>
+                <h3 className="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 transition duration-300">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
+                <div className="mt-4 text-blue-500 font-semibold"></div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -158,6 +207,37 @@ export default function Home() {
             >
               Explore All Projects
             </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Why Donate Section */}
+      <div className="bg-gray-50 py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            <span className="border-b-4 border-blue-500 pb-2">
+              Why Donate with Ujyalo
+            </span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-md text-center transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-blue-50 group cursor-pointer">
+              <div className="text-4xl mb-4 group-hover:animate-bounce transition-all duration-500">🔍</div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition duration-300">100% Transparency</h3>
+              <p className="text-gray-600 group-hover:text-gray-800 transition duration-300">Track where your donations go and see the impact you're making in real-time.</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md text-center transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-blue-50 group cursor-pointer">
+              <div className="text-4xl mb-4 group-hover:animate-bounce transition-all duration-500">🤝</div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition duration-300">Direct Impact</h3>
+              <p className="text-gray-600 group-hover:text-gray-800 transition duration-300">Connect directly with projects and communities that need your support.</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md text-center transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-blue-50 group cursor-pointer">
+              <div className="text-4xl mb-4 group-hover:animate-bounce transition-all duration-500">🛡️</div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition duration-300">Secure Donations</h3>
+              <p className="text-gray-600 group-hover:text-gray-800 transition duration-300">All transactions are secured with industry-standard encryption and protection.</p>
+            </div>
           </div>
         </div>
       </div>

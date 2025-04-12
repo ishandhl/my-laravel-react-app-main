@@ -313,8 +313,7 @@ export default function Project_View() {
                 </div>
               </div>
 
-              {/* Grid Info Cards */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
                   <p className="text-gray-500 text-sm mb-1">Backers</p>
                   <p className="text-2xl font-bold text-gray-800">
@@ -328,110 +327,6 @@ export default function Project_View() {
                   </p>
                 </div>
               </div>
-
-              {/* Top Donor Card */}
-              {project.top_donor && (
-                <div className="bg-white p-3 rounded-lg border border-blue-200 shadow-sm mb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="bg-blue-100 p-1 rounded-full">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-blue-600"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="font-medium text-sm text-blue-700">
-                      Top Supporter
-                    </h3>
-                  </div>
-                  <div className="flex justify-between items-center bg-blue-50 p-2 rounded-md">
-                    <p className="font-medium text-sm text-gray-800">
-                      {project.top_donor.name}
-                    </p>
-                    <p className="font-bold text-sm text-blue-600">
-                      Rs. {project.top_donor.amount}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* Debug information - remove in production */}
-              {console.log("Project:", project)}
-              {console.log("Top three donors:", project.top_three_donors)}
-
-              {/* Top Supporters Section */}
-              {project.top_three_donors && (
-                <div className="bg-white p-3 rounded-lg border border-blue-200 shadow-sm mb-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="bg-blue-100 p-1 rounded-full">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-blue-600"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="font-medium text-sm text-blue-700">
-                      Top Supporters
-                    </h3>
-                    {project.total_amount_raised && (
-                      <span className="text-xs text-blue-500 font-medium bg-blue-50 px-2 py-0.5 rounded-full">
-                        Total: Rs.{" "}
-                        {typeof project.total_amount_raised === "number"
-                          ? project.total_amount_raised.toFixed(2)
-                          : project.total_amount_raised}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    {Object.entries(project.top_three_donors)
-                      .filter(([key]) => !isNaN(parseInt(key)))
-                      .sort((a, b) => Number(b[1].amount) - Number(a[1].amount)) // Sort by amount descending
-                      .map(([_, donor], index) => (
-                        <div
-                          key={index}
-                          className="flex justify-between items-center bg-blue-50 p-2 rounded-md"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span
-                              className={`${
-                                index === 0
-                                  ? "bg-blue-200 text-blue-800"
-                                  : "bg-blue-100 text-blue-700"
-                              } w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold`}
-                            >
-                              {index === 0
-                                ? "1st"
-                                : index === 1
-                                ? "2nd"
-                                : "3rd"}
-                            </span>
-                            <p className="font-medium text-sm text-gray-800">
-                              {donor.name}
-                            </p>
-                          </div>
-                          <p className="font-bold text-sm text-blue-600">
-                            Rs. {Number(donor.amount).toFixed(2)}
-                          </p>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              )}
 
               {project.status === "Running" ? (
                 <div className="mt-6">
@@ -475,6 +370,75 @@ export default function Project_View() {
                       </svg>
                       Support this Project
                     </button>
+                  )}
+
+                  {/* Top Supporters Section */}
+                  {project.top_three_donors && (
+                    <div className="bg-white p-3 rounded-lg border border-blue-200 shadow-sm mb-4 mt-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="bg-blue-100 p-1 rounded-full">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-blue-600"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                        <h3 className="font-medium text-sm text-blue-700">
+                          Top Supporters
+                        </h3>
+                        {project.total_amount_raised && (
+                          <span className="text-xs text-blue-500 font-medium bg-blue-50 px-2 py-0.5 rounded-full">
+                            Total: Rs.{" "}
+                            {typeof project.total_amount_raised === "number"
+                              ? project.total_amount_raised.toFixed(2)
+                              : project.total_amount_raised}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="space-y-2">
+                        {Object.entries(project.top_three_donors)
+                          .filter(([key]) => !isNaN(parseInt(key)))
+                          .sort(
+                            (a, b) => Number(b[1].amount) - Number(a[1].amount)
+                          ) // Sort by amount descending
+                          .map(([_, donor], index) => (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center bg-blue-50 p-2 rounded-md"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className={`${
+                                    index === 0
+                                      ? "bg-blue-200 text-blue-800"
+                                      : "bg-blue-100 text-blue-700"
+                                  } w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold`}
+                                >
+                                  {index === 0
+                                    ? "1st"
+                                    : index === 1
+                                    ? "2nd"
+                                    : "3rd"}
+                                </span>
+                                <p className="font-medium text-sm text-gray-800">
+                                  {donor.name}
+                                </p>
+                              </div>
+                              <p className="font-bold text-sm text-blue-600">
+                                Rs. {Number(donor.amount).toFixed(2)}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
                   )}
                 </div>
               ) : (

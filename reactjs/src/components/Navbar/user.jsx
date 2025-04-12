@@ -28,6 +28,8 @@ export default function UserNav() {
 
     const logoutUser = () => {
         if (token != undefined) {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
             logout();
             navigate("/login");
         }

@@ -38,6 +38,7 @@ class ProjectController extends Controller
             'projects' => $projects
         ]);
     }
+    
 
     public function involved_project(Request $request)
     {
@@ -169,6 +170,7 @@ class ProjectController extends Controller
             'message' => 'Report sent successfully'
         ]);
     }
+    
 
     public function reports(Request $request)
     {
@@ -185,9 +187,11 @@ class ProjectController extends Controller
                 $reports[0]->user = 'User not found'; // You can customize this based on your needs
             }
         }
+        
 
         return response()->json([
             'reports' => $reports
         ]);
+        
     }
 }

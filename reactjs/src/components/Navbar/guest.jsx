@@ -16,7 +16,7 @@ import ContactUs from '../Projects/ContactUs';
 export default function GuestNav() {
   return (
     <div className="App">
-      <nav className="bg-white-500 shadow-lg py-1 ">
+      <nav className="bg-white-500 shadow-lg py-2 ">
         <div className="flex justify-between items-center py-3 container mx-auto">
           <div>
             <Link to="/">
