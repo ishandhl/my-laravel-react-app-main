@@ -37,7 +37,6 @@ class ProjectController extends Controller
         return response()->json([
             'projects' => $projects
         ]);
-        
     }
 
     public function involved_project(Request $request)
@@ -92,7 +91,7 @@ class ProjectController extends Controller
             'projects' => $projects
         ]);
     }
-
+    //projects datas in pages 
     public function project(Request $request)
     {
         $project = Projects::where('ProjectID', $request->id)->get();
@@ -102,14 +101,37 @@ class ProjectController extends Controller
         $rewards = Rewards::where('projectID', $request->id)->get();
         $transaction = Transactions::where('projectID', $request->id)->get();
 
-        // Only fetch transactions and backers if the project type is 'Invest'
-        if ($project[0]->type === 'Invest') {
-            // Check if $transaction is not null and has elements
-            if (!is_null($transaction) && count($transaction) > 0) {
-                $backers = User::where('id', $transaction[0]->backerID)->get();
+
+        // Only fetch transactions and backers if transactions exist
+        if (!is_null($transaction) && count($transaction) > 0) {
+            // Sort transactions by amount (desc) to find top donors
+            $sortedTransactions = $transaction->sortByDesc('amount');
+
+            // Get the top 3 donors
+            $topThreeTransactions = $sortedTransactions->take(3);
+            $topThreeDonors = $topThreeTransactions->map(function ($transaction) {
+                $user = User::where('id', $transaction->backerID)->first();
+                return [
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'amount' => $transaction->amount
+                ];
+            });
+
+            // Set top three donors
+            $project[0]->top_three_donors = $topThreeDonors;
+
+            // Calculate total amount raised
+            $totalRaised = $transaction->sum('amount');
+            $project[0]->total_amount_raised = $totalRaised;
+
+            // Optionally get all backers (only if type is 'Invest')
+            if ($project[0]->type === 'Invest') {
+                $backers = User::whereIn('id', $transaction->pluck('backerID'))->get();
                 $project[0]->backers = $backers;
             }
         }
+
 
         // Calculate total amount raised only if $transaction is not null
         $totalAmount = 0;
@@ -150,19 +172,19 @@ class ProjectController extends Controller
 
     public function reports(Request $request)
     {
-     $reports = Reports::where('projectID', $request->id)->get(); 
- 
-         if ($reports->isNotEmpty()) {
-             $user = User::find($reports[0]['userid']);
-         
-             // Check if user exists before trying to access the 'name' property
-             if ($user) {
-                 $reports[0]->user = $user->name;
-             } else {
-                 // Handle the case where the user doesn't exist (maybe set a default name or null)
-                 $reports[0]->user = 'User not found'; // You can customize this based on your needs
-             }
-         }
+        $reports = Reports::where('projectID', $request->id)->get();
+
+        if ($reports->isNotEmpty()) {
+            $user = User::find($reports[0]['userid']);
+
+            // Check if user exists before trying to access the 'name' property
+            if ($user) {
+                $reports[0]->user = $user->name;
+            } else {
+                // Handle the case where the user doesn't exist (maybe set a default name or null)
+                $reports[0]->user = 'User not found'; // You can customize this based on your needs
+            }
+        }
 
         return response()->json([
             'reports' => $reports
