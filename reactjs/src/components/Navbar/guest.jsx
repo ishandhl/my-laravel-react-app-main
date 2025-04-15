@@ -13,25 +13,37 @@ import PrivacyPolicy from '../Projects/PrivacyPolicy';
 import TermsOfService from '../Projects/TermOfService';
 import Footer from './footer';
 import ContactUs from '../Projects/ContactUs';
+
 export default function GuestNav() {
   return (
-    <div className="App">
-      <nav className="bg-white-500 shadow-lg py-2 ">
-        <div className="flex justify-between items-center py-3 container mx-auto">
-          <div>
-            <Link to="/">
-              <img src={require('./logo.png')} className="w-20 h-auto absolute mb-0 -mt-10" alt="Ujyalo Logo" />
+    <div className="App min-h-screen flex flex-col">
+      <nav className="bg-white shadow-lg sticky top-0 z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center py-3">
+            <Link to="/" className="flex items-center">
+              <img 
+                src={require('./logo.png')} 
+                className="w-24 h-24 object-contain -my-5" 
+                alt="Logo" 
+              />
             </Link>
+
+            <div className="flex items-center space-x-8">
+              <Link to="/projects/all" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Projects</Link>
+              <Link to="/blog" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Blog</Link>
+              <Link to="/about_us" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">About Us</Link>
+              <Link to="/ContactUs" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Contact</Link>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <Link to="/login" className="px-4 py-2 text-gray-600 hover:text-blue-600 font-medium transition-colors">Login</Link>
+              <Link to="/register" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">Sign Up</Link>
+            </div>
           </div>
-          <Link to="/" className="text-transparent bg-gradient-to-r from-[#49D8D4] via-[#3A3478] to-[#7B5BF5] bg-clip-text text-3xl font-extrabold block ml-20 mr-1">Ujyalo</Link>
-          <ul className="hidden md:flex items-center space-x-8">
-            <li>
-              <Link to="/login" className="bg-blue-500 text-white text-1xl px-4 py-2 rounded hover:bg-blue-600 transition font-bold">Login</Link>
-            </li>
-          </ul>
         </div>
       </nav>
-      <div className="">
+
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path={`/project/:id`} element={<Project_View />} />
@@ -48,7 +60,6 @@ export default function GuestNav() {
       </div>
 
       <Footer />
-
     </div>
   );
 }
