@@ -8,11 +8,23 @@ export default function InvolvedProjects() {
     
     useEffect(() => {
         http.get(`/user/involved_projects/${user.id}`).then((response) => {
-            setProjects(response.data.inv_projects);
+            // Deduplicate projects based on projectID
+            const uniqueProjects = removeDuplicateProjects(response.data.inv_projects);
+            setProjects(uniqueProjects);
         }).catch((error) => {
             console.error(error);
         });
     }, []);
+    
+    // Function to remove duplicate projects based on projectID
+    const removeDuplicateProjects = (projectsArray) => {
+        const uniqueProjectIds = new Set();
+        return projectsArray.filter(project => {
+            const isDuplicate = uniqueProjectIds.has(project.projectID);
+            uniqueProjectIds.add(project.projectID);
+            return !isDuplicate;
+        });
+    };
     
     return (
         <div className="bg-gray-50 pt-6 flex items-center justify-center min-h-screen">
