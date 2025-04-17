@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthUser from '../Authentication/AuthUser';
+import ProjectChatbot from '../Projects/ProjectChatbot';
 
 export default function User_Projects() {
     const { user, http } = AuthUser();
@@ -214,6 +215,8 @@ export default function User_Projects() {
                         <div className="text-gray-700 text-center col-span-full py-12">No projects available</div>
                     )}
                 </div>
+                <ProjectChatbot />
+
             </div>
             
             {showVerifyEmailModal && (
@@ -228,8 +231,10 @@ export default function User_Projects() {
                             Close
                         </button>
                     </div>
+                    
                 </div>
             )}
         </div>
+        
     );
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import { LockKeyhole, Eye, Database, Bell, RefreshCw } from 'lucide-react';
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 const PrivacyPolicy = () => {
   return (
@@ -111,6 +113,7 @@ const PrivacyPolicy = () => {
         
 
       </div>
+      <ProjectChatbot />
     </div>
   );
 };

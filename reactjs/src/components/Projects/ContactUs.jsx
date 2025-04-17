@@ -1,4 +1,6 @@
 import React from "react";
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function ContactUs() {
   return (
@@ -121,6 +123,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
+      <ProjectChatbot />
     </div>
   );
 }

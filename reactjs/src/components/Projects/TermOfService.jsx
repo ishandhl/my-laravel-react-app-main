@@ -1,5 +1,6 @@
 import React from 'react';
 import { Scroll, Shield, AlertTriangle, X, RefreshCw } from 'lucide-react';
+import ProjectChatbot from '../Projects/ProjectChatbot';
 
 const TermsOfService = () => {
   return (
@@ -106,12 +107,8 @@ const TermsOfService = () => {
             </div>
           </div>
         </div>
-        
-        {/* Footer area */}
-        <div className="pb-20 text-center text-gray-500">
-          &copy; 2025 Your Company. All rights reserved.
-        </div>
       </div>
+      <ProjectChatbot />
     </div>
   );
 };

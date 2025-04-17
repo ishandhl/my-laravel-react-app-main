@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import AuthUser from "../Authentication/AuthUser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function Project_Edit_View() {
   const { http, httpForm } = AuthUser();
@@ -975,6 +977,7 @@ export default function Project_Edit_View() {
                 </button>
               </div>
             </div>
+            <ProjectChatbot />
           </div>
         )}
 

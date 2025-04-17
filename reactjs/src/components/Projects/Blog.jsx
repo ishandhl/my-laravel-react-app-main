@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function Blog() {
   const [expanded, setExpanded] = useState(null);
@@ -89,6 +91,7 @@ export default function Blog() {
             ))}
           </div>
         </div>
+        <ProjectChatbot />
       </div>
     </>
   );

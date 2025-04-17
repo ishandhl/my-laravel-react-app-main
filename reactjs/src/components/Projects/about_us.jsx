@@ -1,4 +1,6 @@
 import React from "react";
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function AboutUs() {
   return (
@@ -92,6 +94,7 @@ export default function AboutUs() {
           </div>
           </div>
         </div>
+        <ProjectChatbot />
       </div>
     </>
   );

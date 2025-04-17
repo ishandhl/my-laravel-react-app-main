@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AuthUser from "../Authentication/AuthUser";
 import { Link } from "react-router-dom";
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function InvolvedProjects() {
     const { user, http } = AuthUser();
@@ -105,11 +107,13 @@ export default function InvolvedProjects() {
                                         View Project
                                     </Link>
                                 </div>
+                                
                             </div>
                         ))}
                     </div>
                 )}
             </div>
+            <ProjectChatbot />
         </div>
     );
 }

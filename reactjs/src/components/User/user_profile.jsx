@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import AuthUser from "../Authentication/AuthUser";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function Profile() {
 
@@ -158,6 +160,7 @@ export default function Profile() {
                     </Link>
                   </div>
                 </div>
+                <ProjectChatbot />
               </div>
             )}
             

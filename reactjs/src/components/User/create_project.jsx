@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthUser from '../Authentication/AuthUser';
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
 
 export default function Project_Creation() {
     const navigate = useNavigate();
@@ -272,6 +274,7 @@ export default function Project_Creation() {
                     )}
                 </div>
             </div>
+            <ProjectChatbot />
         </div>
     );
 }

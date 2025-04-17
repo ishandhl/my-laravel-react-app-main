@@ -3,6 +3,9 @@ import AuthUser from "../Authentication/AuthUser";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProjectChatbot from '../Projects/ProjectChatbot';
+
+
 
 export default function Project_View() {
   const { user, http, khalti } = AuthUser();
@@ -784,6 +787,7 @@ export default function Project_View() {
                 </div>
               </div>
             </div>
+            <ProjectChatbot />
           </div>
         )}
         <ToastContainer
@@ -798,6 +802,7 @@ export default function Project_View() {
           pauseOnHover
         />
       </div>
+      <ProjectChatbot />
     </div>
   );
 }
