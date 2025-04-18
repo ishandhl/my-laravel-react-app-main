@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import AuthUser from "../Authentication/AuthUser";
 import ProjectChatbot from '../Projects/ProjectChatbot';
 
-
 export default function Home() {
   const { user, http } = AuthUser();
   const [projects, setProjects] = useState([]);
@@ -24,7 +23,6 @@ export default function Home() {
     shuffledProjects.length > 0 ? shuffledProjects[0] : null;
   const randomProjects = shuffledProjects.slice(1);
 
-  // Donation steps data
   const donationSteps = [
     {
       icon: "🔍",
@@ -53,7 +51,6 @@ export default function Home() {
       <div className="relative">
         <div className="relative">
           <div className="bg-black opacity-15 absolute top-0 left-0 bottom-0 right-0"></div>
-          {/* Image */}
           <img
             src={require("./nepal.jpg")}
             alt="Background"
@@ -63,7 +60,6 @@ export default function Home() {
             Ujyalo: Brighten Lives
           </span>
 
-          {/* Button */}
           <Link
             to={user ? `/${user.name}/my_projects` : "/login"}
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 absolute bottom-14 left-1/2 transform -translate-x-1/2 opacity-90"
@@ -73,7 +69,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* How to Donate Section */}
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">
@@ -91,7 +86,6 @@ export default function Home() {
                 <div className="text-4xl mb-4 transition-transform duration-300 hover:scale-110 inline-block">{step.icon}</div>
                 <h3 className="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 transition duration-300">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
-                <div className="mt-4 text-blue-500 font-semibold"></div>
               </div>
             ))}
           </div>
@@ -152,7 +146,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* More Projects Section */}
           <h2 className="text-3xl font-bold mb-8 text-center">
             <span className="border-b-4 border-blue-500 pb-2">
               Discover More
@@ -213,7 +206,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Why Donate Section */}
       <div className="bg-gray-50 py-16 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">
@@ -228,13 +220,13 @@ export default function Home() {
               <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition duration-300">100% Transparency</h3>
               <p className="text-gray-600 group-hover:text-gray-800 transition duration-300">Track where your donations go and see the impact you're making in real-time.</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-md text-center transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-blue-50 group cursor-pointer">
               <div className="text-4xl mb-4 group-hover:animate-bounce transition-all duration-500">🤝</div>
               <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition duration-300">Direct Impact</h3>
               <p className="text-gray-600 group-hover:text-gray-800 transition duration-300">Connect directly with projects and communities that need your support.</p>
             </div>
-            
+
             <div className="bg-white p-6 rounded-xl shadow-md text-center transition duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-blue-50 group cursor-pointer">
               <div className="text-4xl mb-4 group-hover:animate-bounce transition-all duration-500">🛡️</div>
               <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition duration-300">Secure Donations</h3>
@@ -243,8 +235,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* Add the chatbot component */}
-                  <ProjectChatbot />
+
+      <ProjectChatbot />
     </div>
   );
 }
