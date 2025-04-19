@@ -37,6 +37,7 @@ Route::post('register',  [AuthController::class, 'register']);
 Route::get('/home', [ProjectController::class, 'home_projects']);
 Route::get('/project/{id}', [ProjectController::class, 'project']);
 Route::get('user/project/{id}/updates', [UserController::class, 'project_updates']);
+Route::get('/leaderboard', [ProjectController::class, 'leaderboard']);
 
 
 Route::group(['middleware' => 'api'], function () {
@@ -94,4 +95,6 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/transaction/add', [UserController::class, 'add_transaction']);
 
     Route::post('/report/add', [ProjectController::class, 'add_report']);
+    Route::get('/leaderboard', [App\Http\Controllers\ProjectController::class, 'leaderboard']);
+
 });

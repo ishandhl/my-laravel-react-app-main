@@ -192,6 +192,34 @@ class ProjectController extends Controller
         return response()->json([
             'reports' => $reports
         ]);
-        
+    }
+
+    /**
+     * Get top donors for the leaderboard
+     * 
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function leaderboard()
+    {
+        // Get top donors
+        $topDonors = Transactions::select('backerID')
+            ->selectRaw('SUM(amount) as total')
+            ->groupBy('backerID')
+            ->orderByDesc('total')
+            ->limit(10) // Increased to 10 to show more donors
+            ->get()
+            ->map(function ($transaction) {
+                $user = User::find($transaction->backerID);
+                return [
+                    'id' => $transaction->backerID,
+                    'name' => $user ? $user->name : 'Anonymous',
+                    'total' => floatval($transaction->total),
+                    //'avatar' => $user ? $user->profile_photo ?? 'avatars/default.jpg' : 'avatars/default.jpg'
+                ];
+            });
+
+        return response()->json([
+            'topDonors' => $topDonors
+        ]);
     }
 }
